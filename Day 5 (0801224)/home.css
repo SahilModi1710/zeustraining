@@ -45,7 +45,7 @@ body {
     padding: 15px 0;
     padding-top: 20px;
     margin-right: 15px ;
-    font-size: 14px ;
+    font-size: 0.8rem ;
     color: #3FD28B;
     text-decoration: none;
     text-transform: uppercase;
@@ -95,7 +95,7 @@ nav .closeMenu {
 
 .subheader-title .four{
     font-weight: bold;
-    font-size: 24px;
+    font-size: 1.5rem;
     padding-right: 3px;
 }
 
@@ -126,7 +126,7 @@ nav .closeMenu {
     
     /* border: 2px solid red; */
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
     grid-template-rows: auto auto;
     gap: 24px;
 }
@@ -149,6 +149,8 @@ nav .closeMenu {
     display: flex;
     justify-content: space-between;
     width: 100%;
+    height: auto;
+    
     margin-bottom: 7px;
 }
 
@@ -156,6 +158,18 @@ nav .closeMenu {
     height: 157px;
     width: 132px;
 }
+
+#courseName{
+    background-color: white;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1rem;
+    border: none;
+    border-bottom: 1px solid #333333;
+    color: #333333;
+    padding-right: 1.8rem;
+    outline: none;
+}
+
 
 
 @media(max-width: 800px){
@@ -191,4 +205,14 @@ nav .closeMenu {
     .icons{
         padding-right: 0;
     }
+
+    .grid-container {
+        width: 74vw;
+        margin: 0 auto;
+    }
+
+    .container {
+        grid-template-columns: 1fr;
+    }
+
 }
