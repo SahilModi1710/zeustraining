@@ -1,0 +1,101 @@
+@import "navBar";
+@import "mixin";
+@import "mediumScreen";
+@import "cardContainer";
+
+*{
+    padding: 0;
+    margin:0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+     
+}
+body{
+ font-family: 'Quicksand', sans-serif;
+ background-color: $gray-bg;
+}
+
+nav li a:hover::after {
+    border-color: white; 
+}
+
+nav li i:hover {
+    color: white;
+}
+
+
+.container{
+    width: 95vw;
+    height: 89vh;
+    background-color:$gray-bg;
+    margin:0 auto
+}
+.courses-classes{
+    width: 100%;
+    height: 7.5vh;
+    background-color: #3FD28B;
+    display: flex;
+    margin-bottom: 16px;
+
+    .courses ,.classes{
+        @include flexCenter(row,center);
+        flex: 1;
+        background-color: #3FD28B;
+        gap: 15px;
+        font-weight: 500;
+    }
+    .courses{
+        border: none;
+        border-bottom: 5px solid black;
+    }
+
+
+
+}
+
+
+.course-detail{
+    display: flex;
+    justify-content: space-between;
+    height: 45px;
+    border: 2px solid red;
+    line-height: 45px;
+    border: none;
+    border-bottom: 2px solid #252424;
+
+    .current-course,.sort{
+        font-size: 15px;
+        color: #686868;
+    }
+    .sort{
+        display: flex;
+        gap: 10px;
+    }
+    
+    #course-name{
+        border: none;
+        padding:3px;
+        font-size: 16px;
+        background-color: transparent;
+        border-bottom: 1px solid black;
+        width: 100%;
+        outline: none;
+    
+    }
+}
+
+
+.fa-arrow{
+    color: #1F7A54;
+    opacity: 100%;
+}
+
+
+@media (min-width: 786px) and (max-width: 1032px) {
+    .card {
+        width: 74vw; 
+        margin: 0 auto; 
+        box-sizing: border-box; 
+    }
+}

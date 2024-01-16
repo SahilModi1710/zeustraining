@@ -1,0 +1,60 @@
+@import "mixin";
+nav{
+    background-image: $nav-bar-pattern;
+    height: 56px;
+    width: 100%;
+   @include flexCenter(row,space-between );
+    margin-bottom:24px;
+
+    svg{
+        margin: 11px 0 0 24px;
+        height: 36px;
+    }
+
+    .quantum{
+        color: white;
+        font-size: 18px;
+        font-weight: 900;
+        line-height: 56px;
+        padding-left: 3%;
+       }
+
+       ul{
+           display: flex;
+           justify-content: space-between;
+           
+           li{
+               size: 19px;
+               margin:0 1.65vw;
+               color:#3FD28B;
+               opacity: 100%;
+               a{
+                   color:#3FD28B;
+                   opacity: 100%;
+                   font-weight: 600;
+                   position: relative;
+                   
+                   &::hover{
+                   color: white;
+                   }
+
+                   &::after{
+                       @include underLine();
+                   }
+
+               }
+           }
+       }
+       .openMenu{
+           display: none;
+           cursor: pointer;
+           color: #3FD28B;
+       }
+}
+
+
+
+
+
+
+

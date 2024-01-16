@@ -1,0 +1,141 @@
+body,html{
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    background: #EEEEEE 0% 0% no-repeat padding-box;
+    font-family: 'Quicksand', sans-serif;
+
+
+
+}
+
+.nav-bar{
+    max-width: 100vw;
+    height: 3.3vh;
+    background-image: url('./images/header\ pattern\ image\ \(1\).png');
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left: 2%;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+}
+.nav-bar h2{
+    margin :0;
+    padding:0;
+    color: white;
+}
+.main{
+max-height: 100vh;
+display: flex;
+justify-content: center;
+}
+
+.container{
+background:#FFFFFF 0% 0% no-repeat ;
+justify-content: center; 
+align-items: center;
+height: 580px;
+width: 488px;
+display: flex;
+border-top: 3px solid #3AC7EC;
+}
+.title{
+    display: flex;
+    align-items: center;
+    margin-bottom: 34px;
+}
+.title i{
+    color:#1F7A54 ;
+}
+
+.title h2{
+    padding: 0;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.form{
+    /* background-color: green; */
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    height: 90%;
+}
+
+.row{
+    height: 45px;
+    margin-bottom: 33px;
+    width: 100%;
+}
+
+.row:nth-child(5){
+    margin-bottom: 26px;
+}
+.row:nth-child(1){
+    margin-bottom:25px;
+    height: 20px;
+    
+}
+
+.row input[type="radio"]
+{
+    accent-color: #1F7A54;
+}
+.row input[type="text"]{
+    border: none;
+    padding:3px;
+    outline: none;
+    border-bottom: 1px solid black;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+.row select{
+    border: none;
+    padding:3px;
+    font-size: 16px;
+    border-bottom: 1px solid black;
+    width: 100%;
+    outline: none;
+}
+
+.row span{
+    font-size: 12px;
+    padding-left: 8px;
+    color: gray;
+}
+.forget-password{
+    display: flex;
+    justify-content: flex-end;
+    color: #1F7A54;
+    font-size: 14px;
+    margin-top: 3px;
+}
+.rememberPassword{
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    gap: 5px;
+    margin-bottom:34px
+}
+#rememberPassword{
+    height:24px;
+    width:18px;
+    padding:0;
+    accent-color: #1F7A54;
+}
+.button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+.button button{
+    height: 40px;
+    width: 215px;
+    background-color:  #3FD28B;
+    border: none;
+    border-radius: 2px;
+}

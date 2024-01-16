@@ -1,0 +1,23 @@
+$gray-bg:#EEEEEE;
+$nav-bar-pattern:url(../images/header\ pattern\ image\ \(1\).png);
+
+@mixin flexCenter($direction,$justify){
+    display: flex;
+    justify-content: $justify;
+    align-items: center;
+    flex-direction: $direction;
+}
+@mixin flexCenterhorizontal{
+    display: flex;
+    justify-content: center;
+}
+@mixin underLine{
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -14px; /* Adjust the gap between text and underline */
+    left: 0;
+    width: 100%;
+    border-bottom: 2px solid transparent; /* Set initial transparent underline */
+    transition: border-color 0.3s ease; 
+}
