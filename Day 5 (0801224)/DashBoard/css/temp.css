@@ -1,0 +1,111 @@
+/* .modal{
+  display: none;
+  height: 582px;
+ width: 315px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    
+    background-color: white;
+    box-shadow: 0px 1px 6px #0000003D;
+    flex-direction: column;
+    justify-content: space-around;
+    overflow-y: auto;
+    transition: top 1s ease;
+    z-index: 10;
+    margin-top: 7.6vh;
+   
+} */
+/* 
+.noti{
+
+  width: 315px;
+  padding: 5%;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+} */
+
+/* .noti-text{
+  width: 260px;
+} */
+
+/* .noti-content{
+  display: flex;
+    font-size:  14px;
+    font-weight: 700;
+    letter-spacing: 0px;
+    color: #222222;
+    opacity: 1;
+} */
+
+/* .noti-course{
+  margin-top: 8px;
+  font-size: 12px;
+  color: black;
+  font-weight: 600;
+} */
+/* 
+.noti-date{
+  text-align: right;
+  color: #6E6E6E;
+  font-size: 12px;
+  margin-top: 8px;
+  font-weight: 600;
+} */
+
+/* .noti-button{
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  height: 48px;
+  background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 1px 6px #0000003D;
+  border-radius: 0px 0px 2px 2px;
+  border: none;
+  opacity: 1;
+  color: #1F7A54;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: -0.35px;
+} */
+
+ .main-card {
+     width: 97vw;
+     /* margin: 0 auto; */
+ }
+
+ /* 270 */
+
+  <div class="nav-icons"><li class=""><i class="fa-solid fa-bell fa-lg"></i>< !-- <div class="modal" id="modal-notifications"><div class="noti"><div class="noti-content"><div class="noti-text">License for Introduction to Algebra a has been assigned to your school </div><img src="./images/dnd.png"
+  alt=""
+  height="18px"
+  width="15px"
+  /></div><div class="noti-course"><span style="color: #6e6e6e">Course:</span>Advanced Mathematics </div><div class="noti-date">15-Sep-2018 at 07:21 pm</div></div><hr /><div class="noti"><div class="noti-content"><div class="noti-text">License for Introduction to Algebra a has been assigned to your school </div><img src="./images/dnd.png"
+  alt=""
+  height="18px"
+  width="15px"
+  /></div><div class="noti-course"><span style="color: #6e6e6e">Course:</span>Advanced Mathematics </div><div class="noti-date">15-Sep-2018 at 07:21 pm</div></div><hr /><div class="noti"><div class="noti-content"><div class="noti-text">License for Introduction to Algebra a has been assigned to your school </div><img src="./images/dnd.png"
+  alt=""
+  height="18px"
+  width="15px"
+  /></div><div class="noti-course"><span style="color: #6e6e6e">Course:</span>Advanced Mathematics </div><div class="noti-date">15-Sep-2018 at 07:21 pm</div></div><hr /><div class="noti"><div class="noti-content"><div class="noti-text">License for Introduction to Algebra a has been assigned to your school </div><img src="./images/dnd.png"
+  alt=""
+  height="18px"
+  width="15px"
+  /></div><div class="noti-course"><span style="color: #6e6e6e">Course:</span>Advanced Mathematics </div><div class="noti-date">15-Sep-2018 at 07:21 pm</div></div><hr /><div class="noti"><div class="noti-content"><div class="noti-text">License for Introduction to Algebra a has been assigned to your school </div><img src="./images/dnd.png"
+  alt=""
+  height="18px"
+  width="15px"
+  /></div><div class="noti-course"><span style="color: #6e6e6e">Course:</span>Advanced Mathematics </div><div class="noti-date">15-Sep-2018 at 07:21 pm</div></div><hr /><div class="noti"><div class="noti-content"><div class="noti-text">License for Introduction to Algebra a has been assigned to your school </div><img src="./images/dnd.png"
+  alt=""
+  height="18px"
+  width="15px"
+  /></div><div class="noti-course"><span style="color: #6e6e6e">Course:</span>Advanced Mathematics </div><div class="noti-date">15-Sep-2018 at 07:21 pm</div></div><hr /><div class="noti"><div class="noti-content"><div class="noti-text">License for Introduction to Algebra a has been assigned to your school </div><img src="./images/dnd.png"
+  alt=""
+  height="18px"
+  width="15px"
+  /></div><div class="noti-course"><span style="color: #6e6e6e">Course:</span>Advanced Mathematics </div><div class="noti-date">15-Sep-2018 at 07:21 pm</div></div><hr /><button class="noti-button">SHOW ALL</button></div>--></li><li><i class="fa-solid fa-bullhorn fa-lg"></i><div class="modal" id="modal-announcements">Announcements</div></li><li><i class="fa-solid fa-user fa-lg"></i></li></div>

@@ -19,6 +19,7 @@ function createCards(cardDataArray) {
 
   cardDataArray.forEach((cardData) => {
     const temp = document.createElement("div");
+    temp.classList.add("main-card");
     temp.innerHTML = `<div class="card">
             <div class="img-details">
               <div class="card-img">
@@ -99,8 +100,8 @@ const mainMenu = document.querySelector(".main-menu");
 const openMenu = document.querySelector(".openMenu");
 const closeMenu = document.querySelector(".closeMenu");
 
-openMenu.addEventListener("mouseover", show);
-mainMenu.addEventListener("mouseleave", close);
+openMenu.addEventListener("click", show);
+mainMenu.addEventListener("click", close);
 
 function show() {
   mainMenu.style.display = "flex";
@@ -109,4 +110,51 @@ function show() {
 
 function close() {
   mainMenu.style.top = "-100%";
+  modalNotifications.style.top = "-100%";
+  modalAnnouncements.style.top = "-100%";
+  console.log("closed called");
+}
+
+const modalNotifications = document.querySelector("#modal-notifications");
+const notifications = document.querySelector(".nav-icons .fa-bell");
+const modalAnnouncements = document.querySelector("#modal-announcements");
+const announcements = document.querySelector(".nav-icons .fa-bullhorn");
+const modal = document.querySelector(".modal");
+
+notifications.addEventListener("mouseover", showNotifications);
+announcements.addEventListener("mouseover", showAnnouncements);
+
+modalAnnouncements.addEventListener("mouseleave", close);
+modalNotifications.addEventListener("mouseleave", close);
+
+function getViewportWidth() {
+  return (
+    window.innerWidth ||
+    document.documentElement.clientWidth ||
+    document.body.clientWidth
+  );
+}
+
+function showNotifications() {
+  modalAnnouncements.style.display = "none";
+  modalNotifications.style.top = "0";
+
+  var positionLeft = notifications.getBoundingClientRect().left;
+  var viewportWidth = getViewportWidth();
+
+  modalNotifications.style.display = "block";
+  modalNotifications.style.marginRight =
+    viewportWidth - (positionLeft + 15) + "px";
+}
+
+function showAnnouncements() {
+  modalNotifications.style.display = "none";
+  modalAnnouncements.style.top = "0";
+
+  var positionLeft = announcements.getBoundingClientRect().left;
+  var viewportWidth = getViewportWidth();
+
+  modalAnnouncements.style.display = "block";
+  modalAnnouncements.style.marginRight =
+    viewportWidth - (positionLeft + 17) + "px";
 }

@@ -1,6 +1,7 @@
+
 nav {
   background-image: url(../images/header\ pattern\ image\ \(1\).png);
-  height: 56px;
+  height: 7.6vh;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -70,7 +71,153 @@ nav .closeMenu {
   display: none;
 }
 
-@media screen and (max-width: 786px) {
+
+.modal{
+  display: none;
+    max-height: 582px;
+    width: 315px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    /* left: 61vw; */
+    background-color: white;
+    box-shadow: 0px 1px 6px #0000003D;
+    flex-direction: column;
+    justify-content: space-around;
+    overflow-y: auto;
+    transition: top 1s ease;
+    z-index: 10;
+    margin-top: 7.6vh;
+    /* border: 2px solid red; */
+}
+
+.noti{
+
+  width: 315px;
+  padding: 5%;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+} 
+
+.noti-text{
+  width: 260px;
+}
+
+.noti-content{
+  display: flex;
+    font-size:  14px;
+    font-weight: 700;
+    letter-spacing: 0px;
+    color: #222222;
+    opacity: 1;
+}
+
+.noti-course{
+  margin-top: 8px;
+  font-size: 12px;
+  color: black;
+  font-weight: 600;
+}
+
+.noti-date{
+  text-align: right;
+  color: #6E6E6E;
+  font-size: 12px;
+  margin-top: 8px;
+  font-weight: 600;
+}
+
+ .noti-button{
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  height: 48px;
+  background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 1px 6px #0000003D;
+  border-radius: 0px 0px 2px 2px;
+  border: none;
+  opacity: 1;
+  color: #1F7A54;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: -0.35px;
+}
+
+.anounce{
+
+  width: 315px;
+  padding: 5%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+}
+
+.anounce-content {
+  display: flex;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0px;
+  color: #222222;
+  opacity: 1;
+  justify-content: space-between;
+}
+
+.anounce-pa {
+  font-size: 12px;
+  color: black;
+  font-weight: 550;
+}
+
+.anounce-text{
+  font-size: 14px;
+  color:#222222;
+  font-weight: 700;
+  margin-top: 8px;
+}
+
+.anounce-footer{
+  display: flex;
+  justify-content: space-between;
+  color: #6E6E6E;
+    font-size: 12px;
+    margin-top: 8px;
+    font-weight: 600;
+}
+
+
+.anounce-buttons{
+  display: flex;
+  position: sticky;
+    bottom: 0;
+    width: 100%;
+    height: 48px;
+
+    
+    opacity: 1;
+ 
+}
+
+.anounce-button{
+  width: 50%;
+    color: #1F7A54;
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: -0.35px;
+      border: none;
+          background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+            background: #FFFFFF 0% 0% no-repeat padding-box;
+            box-shadow: 0px 1px 6px #0000003D;
+            border-radius: 0px 0px 2px 2px;
+}
+
+
+@media screen and (max-width: 768px) {
   nav .main-menu {
     display: none;
     height: 39vh;
@@ -86,7 +233,7 @@ nav .closeMenu {
     transition: top 1s ease;
     z-index: 10;
     /* gap: 100px; */
-    margin-top: 7.5vh;
+    margin-top: 7.6vh;
     /* border: 2px solid red; */
   }
 
@@ -120,10 +267,16 @@ nav .closeMenu {
     grid-template-columns: 1fr;
   }
   .card {
-    width: 74vw;
+    /* width: 74vw; */
     margin: 0 auto;
     box-sizing: border-box;
   }
+
+  .main-card{
+    width: 97vw;
+    /* margin: 0 auto; */
+  }
+
   .title {
     width: 70%;
     font-size: 12px;
@@ -134,7 +287,15 @@ nav .closeMenu {
   .arrow-down{
     display: block;
   }
+
+  /* #modal-notifications{
+    display: block;
+
+    left: 43vw;
+  } */
 }
+
+
 .card-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
@@ -209,6 +370,7 @@ nav .closeMenu {
   list-style: none;
   box-sizing: border-box;
 }
+
 
 body {
   font-family: "Quicksand", sans-serif;
