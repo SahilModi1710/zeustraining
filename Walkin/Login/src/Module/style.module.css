@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #eeeeee;
+    font-weight: 600;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.card {
+    width: 488px;
+    max-height: 419px;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    opacity: 1;
+    border-radius: 2px 2px 4px 4px;
+    border-top: 4px solid #3ac7ec;
+    padding: 20px 32px 0 32px;
+}
+
+.header {
+    margin-top: 4px;
+    display: flex;
+    justify-content: flex-start;
+    height: 30px;
+}
+
+.title {
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+    font-weight:600;
+}
+
+.body {
+    margin-top: 32px;
+}
+
+
+.not-registered {
+    font-size: 12px;
+    margin: 2px;
+    text-align: center;
+}
+
+.input-group {
+    margin-top: 32px;
+}
+
+.input-group input {
+    font-size: 16px;
+    color: #666666;
+    width: 100%;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid rgb(132, 129, 129);
+    padding: 2px;
+}
+
+.input-group a {
+    margin-top: 5px;
+    display: block;
+    text-align: right;
+    color: #1f7a54;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.checkbox-group {
+    margin-top: 26px;
+}
+
+.inner {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.remember {
+    margin-top: 3px;
+    margin-left: 5px;
+    margin-bottom: 0px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 16px;
+    color: #222222;
+}
+
+.button-group {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 78px;
+}
+
+.btn {
+    color: #1f2834;
+    font-size: 14px;
+    width: 216px;
+    height: 40px;
+    border: 0;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2392156863);
+    background: #3fd28b 0% 0% no-repeat padding-box;
+}
+
+
+
+
+.create-text {
+    display: block;
+    text-decoration: none;
+    color: #1f7a54;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 14px;
+    margin-top: 5px;
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.check-box{
+    accent-color: rgba(31, 122, 84, 1);
+    height: 24px;
+    width: 18px;
+}

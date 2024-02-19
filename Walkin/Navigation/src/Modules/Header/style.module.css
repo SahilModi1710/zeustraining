@@ -1,0 +1,29 @@
+.header-container {
+    background: #1f2834 0% 0% no-repeat padding-box;
+    height: 57px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.lms-logo {
+    margin: 0.6875rem auto 0.625rem 0.93rem;
+}
+
+/* .user-avatar {
+    width: 40px;
+    height: 40px;
+    background: #3c4e62 0% 0% no-repeat padding-box;
+    border: 2px solid #3fd28b;
+    border-radius: 50%;
+    margin: 0.56rem 1rem 0.5rem auto;
+}
+
+.user-avatar span {
+    font: normal normal 600 16px/17px QuickSand;
+    display: flex;
+    color: #fff;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+} */

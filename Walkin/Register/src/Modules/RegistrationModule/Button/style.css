@@ -1,0 +1,15 @@
+.btn-container{
+    display: flex;
+}
+
+.btn{
+    padding: 5px 27px;
+    background: #3fd28b 0% 0% no-repeat padding-box;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    margin: 0 auto 30px auto;
+    font: normal normal 600 16px/18px QuickSand;
+    border-radius: 2px;
+    width: fit-content;
+}

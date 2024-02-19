@@ -1,0 +1,51 @@
+1)Container MFE 
+
+2)Login MFE
+-LoginModule
+ -Login.jsx
+
+3)Navigation MFE 
+-Modules
+  -Header
+   -Header.jsx
+  -Footer
+   -Footer.jsx
+   -About.jsx
+   -Contact.jsx
+
+
+4)Register MFE 
+-Modules
+  -Header
+   -RegistrationSteps.jsx 
+   -CreateAccountHeader.jsx (create an account header)
+  -RegistrationModule
+   -PersonalInformation.jsx
+   -Qualification.jsx
+   	-EducationalQualification.jsx
+  	-ProfessionalQualification.jsx
+   -Review.jsx
+	-personal
+
+5)Utility
+Common
+ -Api.js
+ -Enums.js
+ -Functions.js
+ -Pubsub.js
+
+
+6)WalkinDrive
+-WalkinModule
+  -WalkinDrives.jsx
+  -DriveDetails.jsx
+  -Review.jsx 
+  
+-Cards
+  -DriveCard.jsx (for showing the card in the walk in list)
+  -Timeslot.jsx  
+  -TitleCard.jsx (for display the title of job and pre requisites)
+  -Prerequisites.jsx
+  -JobDetails.jsx 
+
+  
