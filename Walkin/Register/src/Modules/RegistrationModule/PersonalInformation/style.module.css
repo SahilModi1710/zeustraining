@@ -46,11 +46,10 @@
 
 .country-code {
     display: inline;
-    width: 22px;    
+    width: 22px;
     margin-right: 4px;
     text-align: center;
 }
-
 
 .checkbox-label {
     display: inline-block;
@@ -69,32 +68,31 @@
     width: 18px;
 }
 
-
 .checkbox-container {
     display: flex;
     align-items: center;
 }
 
-.symbolPlus{
+.symbolPlus {
     font: normal normal 700 16px/20px QuickSand;
     letter-spacing: 0px;
     color: #222;
 }
 
-.upload-resume {
+.upload-label {
     display: flex;
     align-items: center;
+    cursor: pointer;
     margin-top: 40px;
 }
 
-.upload-resume img {
+.upload-label img {
     margin-right: 8px;
-    cursor: pointer;
 }
 
 .input-file {
     display: none;
-}    
+}
 
 .resume-text {
     font: normal normal 600 14px/18px QuickSand;
@@ -114,31 +112,41 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+   cursor: pointer;
 }
 
 .profile-img {
     width: 115px;
     height: 115px;
+    margin-left: 10px;
+    cursor: pointer;
 }
 
-.profile-text{
+.profile-text {
     font: normal normal 600 12px/14px QuickSand;
     color: #1f7a54;
     margin-top: 16px;
     margin-bottom: 8px;
+    cursor: pointer;
 }
+
+.profile-label{
+    display: flex;
+    flex-direction: column;
+}
+
+
 
 .img-size {
     font: normal normal 600 10px/13px QuickSand;
     color: #757575;
 }
 
-.next-section{
+.next-section {
     padding-bottom: 30px;
 }
 
-.btn{
-
+.btn {
     background: #3fd28b 0% 0% no-repeat padding-box;
     box-shadow: 0px 3px 5px #0000003d;
     border-radius: 2px;
@@ -155,6 +163,6 @@
     text-transform: uppercase;
 }
 
-.isReview{
-    border:none;
+.isReview {
+    border: none;
 }

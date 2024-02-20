@@ -1,0 +1,138 @@
+.card-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    
+}
+
+.card {
+    margin: 24px 24px 0 24px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background: #fff 0% 0% no-repeat padding-box;
+    box-shadow: 0px 4px 6px #000 3d;
+    padding: 16px;
+}
+
+
+.title {
+    font: normal normal 600 18px/20px QuickSand;
+    color: #1f7a54;
+    margin-bottom: 16px;
+}
+
+.sub-title {
+    text-align: left;
+    font: normal normal 600 12px/16px QuickSand;
+    letter-spacing: 0px;
+    margin-bottom: 8px;
+    color: #666;
+}
+
+.date-city {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 16px;
+}
+.dates {
+    text-align: left;
+    font: normal normal 600 14px/16px QuickSand;
+    letter-spacing: 0px;
+    color: #222;
+    margin-right: 36px;
+}
+
+.city {
+    display: flex;
+    align-items: center;
+}
+
+ .city img {
+    height: 13px;
+    margin-right: 4px;
+}
+
+.city span {
+    text-align: left;
+    font: normal normal 600 12px/16px Quicksand;
+    letter-spacing: 0px;
+    color: #666;
+}
+
+.jobroles {
+    margin-top: 3px;
+    margin-bottom: 24px;
+}
+
+.roles {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+
+.role-container {
+    display: flex;
+    align-items: center;
+}
+
+.role img {
+    border: 1px solid #222;
+    margin: 4px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    padding: 4px;
+    align-items: center;
+}
+
+.role-container span {
+    margin-left: 4px;
+    text-align: left;
+    font: normal normal 600 14px/20px QuickSand;
+    letter-spacing: 0px;
+    color: #222;
+}
+
+
+
+.btn{
+    padding: 5px 27px;
+    background: #3fd28b 0% 0% no-repeat padding-box;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    margin: 0 0 10px 0;
+    font: normal normal 600 16px/18px QuickSand;
+    border-radius: 2px;
+    width: fit-content;
+}
+
+.linee {
+    height: 1px;
+    background: #000;
+    opacity: 0.12;
+    margin-bottom: 8px;
+}
+
+.role{
+    display: flex;
+    align-items: center;
+    margin-right: 17px;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 430px) {
+   
+    .role-container{
+        display: flex;
+        flex-direction: column;
+    }
+}

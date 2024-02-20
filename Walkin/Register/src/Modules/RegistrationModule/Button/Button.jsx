@@ -1,19 +1,13 @@
 import React from "react";
-import "./style.css";
+import styles from "./style.module.css";
 
 const Button = ({ btnName, onClick }) => {
-  // const handleClick = (e) => {
-  //   console.log(e.target.value);
-  // };
-
   return (
-    <>
-      <div className="btn-container">
-        <button className="btn" onClick={onClick}>
-          {btnName}
-        </button>
-      </div>
-    </>
+    <div className={styles["btn-container"]}>
+      <button className={styles.btn} onClick={onClick}>
+        {btnName}
+      </button>
+    </div>
   );
 };
 

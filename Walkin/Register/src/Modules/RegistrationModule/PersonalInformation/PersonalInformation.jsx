@@ -1,12 +1,54 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./style.module.css";
 import Button from "../Button/Button";
 import { useNavigate } from "react-router-dom";
+import { useRegisterStore } from "../../../ReactStore/Store";
 
 const PersonalInformation = ({ review }) => {
-  const navigateTo = useNavigate();
+  const { userDetails, userRegister } = useRegisterStore();
 
-  const handleNext = (e) => {
+  const navigateTo = useNavigate();
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [resumeFile, setResumeFile] = useState(null);
+  const [portfolioUrl, setPortfolioUrl] = useState("");
+  const [referral, setReferral] = useState("");
+  const [jobMail, setJobMail] = useState(true);
+  const [profilePicFile, setProfilePicFile] = useState(null);
+  const [countryCode, setCountryCode] = useState("");
+  const [jobRoles, setJobRoles] = useState([
+    "Instructional Designer",
+    "Software Quality Engineer",
+  ]);
+
+  const personalInformation = {
+    firstName: firstName,
+    lastName: lastName,
+    email: email,
+    mobileNumber: countryCode + phoneNumber + "",
+    resumeFile: resumeFile,
+    portfolioUrl: portfolioUrl,
+    referral: referral,
+    jobMail: jobMail,
+    profilePicFile: profilePicFile,
+    jobRoles: jobRoles,
+  };
+
+  const handleJobRoleChange = (role) => {
+    if (jobRoles.includes(role)) {
+      setJobRoles(jobRoles.filter((selectedRole) => selectedRole !== role));
+    } else {
+      setJobRoles([...jobRoles, role]);
+    }
+  };
+
+  console.log(personalInformation);
+
+  const handleNext = () => {
+    userRegister(personalInformation);
+    console.log(userDetails);
     navigateTo("/qualification");
   };
 
@@ -25,9 +67,13 @@ const PersonalInformation = ({ review }) => {
               placeholder="John"
               name="firstname"
               id="firstname"
+              value={firstName}
               disabled={review}
               className={styles["input-element"]}
               style={review ? { border: "none" } : {}}
+              onChange={(e) => {
+                setFirstName(e.target.value);
+              }}
             />
           </div>
 
@@ -40,9 +86,13 @@ const PersonalInformation = ({ review }) => {
               placeholder="Watson"
               name="lastname"
               id="lastname"
+              value={lastName}
               disabled={review}
               className={styles["input-element"]}
               style={review ? { border: "none" } : {}}
+              onChange={(e) => {
+                setLastName(e.target.value);
+              }}
             />
           </div>
 
@@ -58,6 +108,8 @@ const PersonalInformation = ({ review }) => {
               disabled={review}
               className={styles["input-element"]}
               style={review ? { border: "none" } : {}}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
 
@@ -75,7 +127,10 @@ const PersonalInformation = ({ review }) => {
                 disabled={review}
                 className={`${styles["input-element"]} ${styles["country-code"]}`}
                 style={review ? { border: "none" } : {}}
+                value={countryCode}
+                onChange={(e) => setCountryCode(e.target.value)}
               />
+
               <input
                 type="text"
                 placeholder="9876543210"
@@ -84,19 +139,30 @@ const PersonalInformation = ({ review }) => {
                 disabled={review}
                 className={styles["input-element"]}
                 style={review ? { border: "none" } : {}}
+                value={phoneNumber}
+                onChange={(e) => setPhoneNumber(e.target.value)}
               />
             </div>
           </div>
 
           <div className={styles["upload-resume"]}>
-            <img src="../../../assets/upload-green.svg" alt="" />
+            <label htmlFor="resume" className={styles["upload-label"]}>
+              <img src="../../../assets/upload-green.svg" alt="" />
+              <span className={styles["resume-text"]}>Upload Resume</span>
+            </label>
             <input
               type="file"
               name="resume"
               id="resume"
               className={styles["input-file"]}
+              onChange={(e) => {
+                const file = e.target.files[0];
+                setResumeFile(file);
+              }}
             />
-            <span className={styles["resume-text"]}>Upload Resume</span>
+            {resumeFile && (
+              <div className={styles["file-name"]}>{resumeFile.name}</div>
+            )}
           </div>
 
           <div className={styles["input-group"]}>
@@ -104,13 +170,15 @@ const PersonalInformation = ({ review }) => {
               Enter Portfolio URL (if any)
             </label>
             <input
-              type="portfolio"
+              type="text"
               placeholder="www.myportfolio.in"
               name="portfolio"
               id="portfolio"
               disabled={review}
               className={styles["input-element"]}
               style={review ? { border: "none" } : {}}
+              value={portfolioUrl}
+              onChange={(e) => setPortfolioUrl(e.target.value)}
             />
           </div>
 
@@ -123,10 +191,11 @@ const PersonalInformation = ({ review }) => {
                 type="checkbox"
                 name="role1"
                 id="role1"
-                defaultChecked
+                checked={jobRoles.includes("Instructional Designer")}
                 disabled={review}
                 className={`${styles["input-element"]} ${styles["checkbox-group"]}`}
                 style={review ? { border: "none" } : {}}
+                onChange={() => handleJobRoleChange("Instructional Designer")}
               />
               <label
                 htmlFor="role1"
@@ -140,9 +209,11 @@ const PersonalInformation = ({ review }) => {
                 type="checkbox"
                 name="role2"
                 id="role2"
+                checked={jobRoles.includes("Software Engineer")}
                 disabled={review}
                 className={`${styles["input-element"]} ${styles["checkbox-group"]}`}
                 style={review ? { border: "none" } : {}}
+                onChange={() => handleJobRoleChange("Software Engineer")}
               />
               <label
                 htmlFor="role2"
@@ -156,10 +227,13 @@ const PersonalInformation = ({ review }) => {
                 type="checkbox"
                 name="role3"
                 id="role3"
-                defaultChecked
+                checked={jobRoles.includes("Software Quality Engineer")}
                 disabled={review}
                 className={`${styles["input-element"]} ${styles["checkbox-group"]}`}
                 style={review ? { border: "none" } : {}}
+                onChange={() =>
+                  handleJobRoleChange("Software Quality Engineer")
+                }
               />
               <label
                 htmlFor="role3"
@@ -176,13 +250,15 @@ const PersonalInformation = ({ review }) => {
               The Employee Who Referred You
             </label>
             <input
-              type="referral"
+              type="text"
               placeholder=""
               name="referral"
               id="referral"
               disabled={review}
               className={styles["input-element"]}
               style={review ? { border: "none" } : {}}
+              value={referral}
+              onChange={(e) => setReferral(e.target.value)}
             />
           </div>
 
@@ -191,10 +267,11 @@ const PersonalInformation = ({ review }) => {
               type="checkbox"
               name="job-mail"
               id="job-mail"
-              defaultChecked
+              checked={jobMail}
               disabled={review}
               className={`${styles["input-element"]} ${styles["checkbox-group"]}`}
               style={review ? { border: "none" } : {}}
+              onChange={() => setJobMail(!jobMail)}
             />
             <label
               htmlFor="job-mail"
@@ -207,23 +284,34 @@ const PersonalInformation = ({ review }) => {
 
         <div className={styles["right-input"]}>
           <div className={styles["upload-profile"]}>
-            <img
-              src="../../../assets/users.png"
-              alt="profile pic"
-              className={styles["profile-img"]}
-            />
+            <label htmlFor="profile-pic" className={styles["profile-label"]}>
+              <img
+                src="../../../assets/users.png"
+                alt="profile pic"
+                className={styles["profile-img"]}
+              />
+              <span className={styles["profile-text"]}>
+                UPLOAD DISPLAY PICTURE
+              </span>
+            </label>
+            <input
+              type="file"
+              name="profile-pic"
+              id="profile-pic"
+              className={styles["input-file"]}
+              onChange={(e) => {
+                const file = e.target.files[0];
 
-            <span className={styles["profile-text"]}>
-              UPLOAD DISPLAY PICTURE
-            </span>
+                setProfilePicFile(file);
+              }}
+            />
+            {profilePicFile && (
+              <div className={styles["file-name"]}>{profilePicFile.name}</div>
+            )}
             <span className={styles["img-size"]}>Max. image size: 5 MB</span>
           </div>
         </div>
       </div>
-
-      {/* <div className={styles["next-section"]}>
-        <button className={styles["btn"]}>NEXT</button>
-      </div> */}
 
       {!review && <Button btnName={"NEXT"} onClick={handleNext} />}
     </>

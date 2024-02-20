@@ -8,17 +8,17 @@ import { useNavigate } from "react-router-dom";
 const Qualifications = ({ review }) => {
   const navigateTo = useNavigate();
 
-  const handleNext = (e) => {
+  const handleNext = () => {
     navigateTo("/review");
   };
-  const handlePrevious = (e) => {
+  const handlePrevious = () => {
     navigateTo("/");
   };
 
   return (
     <>
       <div className="container">
-        <EducationalQualification review={review} />
+        {/* <EducationalQualification review={review} /> */}
         <ProfessionalQualification review={review} />
 
         {!review && (
