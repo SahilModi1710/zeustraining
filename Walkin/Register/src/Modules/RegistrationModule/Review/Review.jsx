@@ -14,7 +14,7 @@ const Review = () => {
   };
 
   const handlePrevious = () => {
-    navigatTo("/qualification");
+    navigatTo("/register/qualification");
   };
 
   return (

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./style.module.css";
 import { useLoginStore } from "../ReactStore/Store";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const { userLogin, isUserLoggedIn, userDetails } = useLoginStore();
@@ -81,9 +82,9 @@ const Login = () => {
             <div className={styles["last-section"]}>
               <p className={styles["not-registered"]}>Not registered yet?</p>
               <p className={styles["not-registered"]}>
-                <a href="" className={styles["create-text"]}>
+                <Link to="/register" className={styles["create-text"]}>
                   CREATE AN ACCOUNT
-                </a>
+                </Link>
               </p>
             </div>
           </form>

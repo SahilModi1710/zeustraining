@@ -49,7 +49,7 @@ const PersonalInformation = ({ review }) => {
   const handleNext = () => {
     userRegister(personalInformation);
     console.log(userDetails);
-    navigateTo("/qualification");
+    navigateTo("/register/qualification");
   };
 
   return (

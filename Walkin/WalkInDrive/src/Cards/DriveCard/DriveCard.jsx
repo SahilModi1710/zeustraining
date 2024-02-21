@@ -6,7 +6,7 @@ const DriveCard = ({ driveDetails }) => {
   const navigateTo = useNavigate();
 
   const handleClick = () => {
-    navigateTo("/drive");
+    navigateTo("/walkindrives/singleDrive");
   };
 
   return (
@@ -20,7 +20,7 @@ const DriveCard = ({ driveDetails }) => {
               <button
                 className={styles.btn}
                 onClick={() => {
-                  navigateTo("/review");
+                  navigateTo("/walkindrives/review");
                 }}
               >
                 APPLY

@@ -41,10 +41,12 @@ module.exports = (_, argv) => ({
 
   plugins: [
     new ModuleFederationPlugin({
-      name: "Navigation",
+      name: "NavigationMFE",
       filename: "remoteEntry.js",
       remotes: {},
-      exposes: {},
+      exposes: {
+        "./Header": "./src/Modules/Header/Header.jsx",
+      },
       shared: {
         ...deps,
         react: {

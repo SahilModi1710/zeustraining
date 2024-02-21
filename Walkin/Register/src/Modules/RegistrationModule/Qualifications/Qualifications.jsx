@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./style.css";
 import EducationalQualification from "./EducationalQualification";
 import ProfessionalQualification from "./ProfessionalQualification";
+import RegistrationHeader from "../../Header/RegistrationHeader";
 import Button from "../Button/Button";
 import { useNavigate } from "react-router-dom";
 
@@ -9,16 +10,17 @@ const Qualifications = ({ review }) => {
   const navigateTo = useNavigate();
 
   const handleNext = () => {
-    navigateTo("/review");
+    navigateTo("/register/review");
   };
   const handlePrevious = () => {
-    navigateTo("/");
+    navigateTo("/register");
   };
 
   return (
     <>
       <div className="container">
-        {/* <EducationalQualification review={review} /> */}
+        <RegistrationHeader />
+        <EducationalQualification review={review} />
         <ProfessionalQualification review={review} />
 
         {!review && (

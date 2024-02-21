@@ -46,10 +46,12 @@ module.exports = (_, argv) => ({
 
   plugins: [
     new ModuleFederationPlugin({
-      name: "Login",
+      name: "LoginMFE",
       filename: "remoteEntry.js",
       remotes: {},
-      exposes: {},
+      exposes: {
+        "./Login": "./src/Module/Login.jsx",
+      },
       shared: {
         ...deps,
         react: {

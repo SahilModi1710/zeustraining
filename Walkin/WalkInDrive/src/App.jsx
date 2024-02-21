@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import WalkInDrives from "./WalkIn Module/WalkInDrives";
+// import WalkInDrives from "./WalkInModule/WalkInDrives";
 import { RouterProvider } from "react-router-dom";
-import router from "./WalkIn Module/Router";
+import router from "./WalkInModule/Router";
 
 const App = () => (
   <div className="walkin-container">
