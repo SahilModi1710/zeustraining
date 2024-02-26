@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./style.module.css";
 
-const JobDetails = () => {
+const JobDetails = ({ jobDetails }) => {
   const [showJobDesc, setShowJobDesc] = useState(false);
 
   const openJob = () => {
@@ -14,7 +14,7 @@ const JobDetails = () => {
         className={styles["education-section"]}
         style={{ marginBottom: showJobDesc ? "0px" : "16px" }}
       >
-        <span className={styles.heading}>Instructional Designer</span>
+        <span className={styles.heading}>{jobDetails.job_title}</span>
         {showJobDesc ? (
           <img
             src="../../../assets/icons/list-up.svg"

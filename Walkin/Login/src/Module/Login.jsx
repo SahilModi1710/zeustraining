@@ -1,28 +1,51 @@
 import React, { useEffect, useState } from "react";
 import styles from "./style.module.css";
 import { useLoginStore } from "../ReactStore/Store";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Login = () => {
   const { userLogin, isUserLoggedIn, userDetails } = useLoginStore();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(true);
+  const navigateTo = useNavigate();
 
   useEffect(() => {
     console.log("isUserLoggedIn:", isUserLoggedIn);
     console.log("userDetails:", userDetails);
   }, [isUserLoggedIn, userDetails]);
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     console.log("login button called ", email, " ", password, " ", rememberMe);
 
     const authRequest = {
-      email: email,
-      password: password,
-      rememberMe: rememberMe,
+      info: {
+        fieldName: "Login",
+      },
+      arguments: {
+        input: {
+          email: email,
+          password: password,
+        },
+      },
     };
+
+    try {
+      const response = await axios.post(
+        "http://localhost:4000/dev/api/handle_graphql",
+        authRequest
+      );
+      if (response.data) {
+        console.log(response);
+        navigateTo("/walkindrives");
+      }
+      return response.data;
+    } catch (error) {
+      console.error("Error in fetchData:", error.message);
+      throw new Error("Error fetching data");
+    }
 
     userLogin(authRequest);
   };

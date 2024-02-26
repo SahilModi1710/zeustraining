@@ -1,13 +1,35 @@
 import React, { useState } from "react";
 import styles from "./style.module.css"; // Import the module CSS file
+// ... (previous imports)
 
-const TimeSlot = () => {
+const TimeSlot = ({ driveDetails }) => {
   const [selectedFile, setSelectedFile] = useState(null);
+  const [selectedTimeSlot, setSelectedTimeSlot] = useState(null);
+  const [selectedJobRoles, setSelectedJobRoles] = useState([]);
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     setSelectedFile(file);
   };
+
+  const handleTimeSlotChange = (e) => {
+    setSelectedTimeSlot(e.target.value);
+  };
+
+  const handleJobRoleChange = (e) => {
+    const selectedJobRoleId = e.target.value;
+
+    setSelectedJobRoles((prevSelectedJobRoles) => {
+      if (prevSelectedJobRoles.includes(selectedJobRoleId)) {
+        return prevSelectedJobRoles.filter((id) => id !== selectedJobRoleId);
+      } else {
+        return [...prevSelectedJobRoles, selectedJobRoleId];
+      }
+    });
+  };
+
+  console.log(selectedJobRoles);
+  console.log(selectedTimeSlot);
 
   return (
     <div className={styles["time-slot"]}>
@@ -16,70 +38,52 @@ const TimeSlot = () => {
       <span className={styles.heading}>Select a Time Slot :</span>
 
       <div className={styles["input-group2"]}>
-        <div className={styles["radio-container"]}>
-          <input
-            type="radio"
-            name="slot1"
-            id="slot1"
-            defaultChecked
-            className={styles["radio-group"]}
-          />
-          <label htmlFor="slot1" className={styles["radio-text"]}>
-            9:00 AM to 11:00 AM
-          </label>
-        </div>
-        <div className={styles["radio-container"]}>
-          <input
-            type="radio"
-            name="slot1"
-            id="slot2"
-            className={styles["radio-group"]}
-          />
-          <label htmlFor="slot2" className={styles["radio-text"]}>
-            1:00 PM to 3:00 PM
-          </label>
-        </div>
+        {driveDetails.timeSlots.map((timeSlot, index) => {
+          return (
+            <div className={styles["radio-container"]} key={index}>
+              <input
+                type="radio"
+                name="timeSlot"
+                id={`timeSlot${index}`}
+                value={timeSlot.time_slot}
+                className={styles["radio-group"]}
+                onChange={handleTimeSlotChange}
+              />
+              <label
+                htmlFor={`timeSlot${index}`}
+                className={styles["radio-text"]}
+              >
+                {timeSlot.time_slot}
+              </label>
+            </div>
+          );
+        })}
       </div>
 
       <div className={styles.linee}></div>
 
       <span className={styles.heading}>Select Your Preference :</span>
       <div className={styles["input-group"]}>
-        <div className={styles["radio-container"]}>
-          <input
-            type="checkbox"
-            name="role1"
-            id="role1"
-            defaultChecked
-            className={styles["radio-group"]}
-          />
-          <label htmlFor="role1" className={styles["radio-text"]}>
-            Instructional Designer
-          </label>
-        </div>
-        <div className={styles["radio-container"]}>
-          <input
-            type="checkbox"
-            name="role2"
-            id="role2"
-            className={styles["radio-group"]}
-          />
-          <label htmlFor="role2" className={styles["radio-text"]}>
-            Software Engineer
-          </label>
-        </div>
-        <div className={styles["radio-container"]}>
-          <input
-            type="checkbox"
-            name="role3"
-            id="role3"
-            defaultChecked
-            className={styles["radio-group"]}
-          />
-          <label htmlFor="role3" className={styles["radio-text"]}>
-            Software Quality Engineer
-          </label>
-        </div>
+        {driveDetails.jobRoles.map((jobrole, index) => {
+          return (
+            <div className={styles["radio-container"]} key={index}>
+              <input
+                type="checkbox"
+                name="jobRole"
+                id={`jobRole${index}`}
+                value={jobrole.job_title}
+                className={styles["radio-group"]}
+                onChange={handleJobRoleChange}
+              />
+              <label
+                htmlFor={`jobRole${index}`}
+                className={styles["radio-text"]}
+              >
+                {jobrole.job_title}
+              </label>
+            </div>
+          );
+        })}
       </div>
 
       <div className={styles.linee}></div>

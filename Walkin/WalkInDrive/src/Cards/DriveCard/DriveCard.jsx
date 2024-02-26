@@ -2,11 +2,12 @@ import React from "react";
 import styles from "./style.module.css";
 import { useNavigate } from "react-router-dom";
 
-const DriveCard = ({ driveDetails }) => {
+const DriveCard = ({ driveDetails, drive }) => {
   const navigateTo = useNavigate();
 
+  // console.log(driveDetails);
   const handleClick = () => {
-    navigateTo("/walkindrives/drive");
+    navigateTo(`/walkindrives/${driveDetails.guid}`);
   };
 
   return (
@@ -14,9 +15,9 @@ const DriveCard = ({ driveDetails }) => {
       <div className={styles["card-container"]}>
         <div className={styles.card}>
           <div className={styles.header}>
-            <span className={styles.title}>Walk In for Designer Job Role</span>
+            <span className={styles.title}>{driveDetails.drive_title}</span>
 
-            {driveDetails && (
+            {drive && (
               <button
                 className={styles.btn}
                 onClick={() => {
@@ -29,14 +30,16 @@ const DriveCard = ({ driveDetails }) => {
           </div>
           <span className={styles["sub-title"]}>Date & Time:</span>
           <div className={styles["date-city"]}>
-            <span className={styles.dates}>10-Jul-2021 to 11-Jul-2021</span>
+            <span className={styles.dates}>
+              {driveDetails.start_date} to {driveDetails.start_date}{" "}
+            </span>
 
             <div className={styles.city}>
               <img
                 src="../../../assets/location_on_black_24dp.svg"
                 alt="location icon"
               />
-              <span>Mumbai</span>
+              <span>{driveDetails.location}</span>
             </div>
           </div>
 
@@ -47,32 +50,22 @@ const DriveCard = ({ driveDetails }) => {
 
             <div className={styles.roles}>
               <div className={styles["role-container"]}>
-                <div className={styles.role}>
-                  <img
-                    src="../../../assets/Instructional Designer.svg"
-                    alt="Instructional Designer.svg"
-                  />
-                  <span>Instructional Designer</span>
-                </div>
-                <div className={styles.role}>
-                  <img
-                    src="../../../assets/Instructional Designer.svg"
-                    alt="Instructional Designer.svg"
-                  />
-                  <span>Instructional Designer</span>
-                </div>
-                <div className={styles.role}>
-                  <img
-                    src="../../../assets/Instructional Designer.svg"
-                    alt="Instructional Designer.svg"
-                  />
-                  <span>Instructional Designer</span>
-                </div>
+                {driveDetails.jobRoles.map((jobRole, index) => {
+                  return (
+                    <div className={styles.role} key={index}>
+                      <img
+                        src="../../../assets/Instructional Designer.svg"
+                        alt="Instructional Designer.svg"
+                      />
+                      <span>{jobRole.job_title}</span>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>
 
-          {!driveDetails && (
+          {!drive && (
             <button
               className={styles.btn}
               style={{ margin: "10px auto 10px auto" }}

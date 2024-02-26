@@ -10,7 +10,7 @@ const WalkinDrive = () => {
       <Routes>
         {/* <Route path="/" element={<Layout />}> */}
         <Route path="/" element={<WalkInDrives />} />
-        <Route path="/drive" element={<DriveDetails />} />
+        <Route path="/:guid" element={<DriveDetails />} />
         <Route path="/review" element={<Review />} />
         {/* </Route> */}
       </Routes>

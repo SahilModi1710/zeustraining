@@ -52,7 +52,7 @@ export const resolversConfig: (AppSyncSimulatorPipelineResolverConfig | AppSyncS
     {
         kind: RESOLVER_KIND.UNIT,
         typeName: "Query",
-        fieldName: "getAllWalkInDrives",
+        fieldName: "AllWalkInDrives",
         dataSourceName: "LambdaDataSource",
         requestMappingTemplateLocation: "lambdaRequestMappingTemplate.vtl",
         responseMappingTemplateLocation: "lambdaResponseMappingTemplate.vtl"
@@ -60,7 +60,7 @@ export const resolversConfig: (AppSyncSimulatorPipelineResolverConfig | AppSyncS
     {
         kind: RESOLVER_KIND.UNIT,
         typeName: "Query",
-        fieldName: "getDriveDetailsByID",
+        fieldName: "DriveDetailsByID",
         dataSourceName: "LambdaDataSource",
         requestMappingTemplateLocation: "lambdaRequestMappingTemplate.vtl",
         responseMappingTemplateLocation: "lambdaResponseMappingTemplate.vtl"
@@ -68,7 +68,7 @@ export const resolversConfig: (AppSyncSimulatorPipelineResolverConfig | AppSyncS
     {
         kind: RESOLVER_KIND.UNIT,
         typeName: "Query",
-        fieldName: "login",
+        fieldName: "Login",
         dataSourceName: "LambdaDataSource",
         requestMappingTemplateLocation: "lambdaRequestMappingTemplate.vtl",
         responseMappingTemplateLocation: "lambdaResponseMappingTemplate.vtl"
@@ -76,7 +76,15 @@ export const resolversConfig: (AppSyncSimulatorPipelineResolverConfig | AppSyncS
     {
         kind: RESOLVER_KIND.UNIT,
         typeName: "Mutation",
-        fieldName: "applyToDrive",
+        fieldName: "ApplyToDrive",
+        dataSourceName: "LambdaDataSource",
+        requestMappingTemplateLocation: "lambdaRequestMappingTemplate.vtl",
+        responseMappingTemplateLocation: "lambdaResponseMappingTemplate.vtl"
+    },
+    {
+        kind: RESOLVER_KIND.UNIT,
+        typeName: "Mutation",
+        fieldName: "CreateUser",
         dataSourceName: "LambdaDataSource",
         requestMappingTemplateLocation: "lambdaRequestMappingTemplate.vtl",
         responseMappingTemplateLocation: "lambdaResponseMappingTemplate.vtl"
