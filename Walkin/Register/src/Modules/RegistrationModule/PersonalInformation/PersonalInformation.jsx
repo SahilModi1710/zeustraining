@@ -3,6 +3,7 @@ import styles from "./style.module.css";
 import Button from "../Button/Button";
 import { useNavigate } from "react-router-dom";
 import { useRegisterStore } from "../../../ReactStore/Store";
+import RegistrationHeader from "../../Header/RegistrationHeader";
 
 const PersonalInformation = ({ review }) => {
   const { userDetails, userRegister } = useRegisterStore();
@@ -298,6 +299,7 @@ const PersonalInformation = ({ review }) => {
               type="file"
               name="profile-pic"
               id="profile-pic"
+              disabled={review}
               className={styles["input-file"]}
               onChange={(e) => {
                 const file = e.target.files[0];

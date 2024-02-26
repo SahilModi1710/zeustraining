@@ -45,11 +45,13 @@ module.exports = (_, argv) => ({
       filename: "remoteEntry.js",
       remotes: {},
       exposes: {
+        "./RegistrationHeader": "./src/Modules/Header/RegistrationHeader.jsx",
         "./PersonalInformation":
           "./src/Modules/RegistrationModule/PersonalInformation/PersonalInformation.jsx",
         "./Qualifications":
           "./src/Modules/RegistrationModule/Qualifications/Qualifications.jsx",
         "./Review": "./src/Modules/RegistrationModule/Review/Review.jsx",
+        "./Registration": "./src/Modules/RegistrationModule/Registration.jsx",
       },
       shared: {
         ...deps,

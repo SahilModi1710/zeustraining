@@ -82,9 +82,11 @@ const Login = () => {
             <div className={styles["last-section"]}>
               <p className={styles["not-registered"]}>Not registered yet?</p>
               <p className={styles["not-registered"]}>
-                <Link to="/register" className={styles["create-text"]}>
+                {/* <Link to="/register" className={styles["create-text"]}> */}
+                <a href="/register" className={styles["create-text"]}>
                   CREATE AN ACCOUNT
-                </Link>
+                </a>
+                {/* </Link> */}
               </p>
             </div>
           </form>

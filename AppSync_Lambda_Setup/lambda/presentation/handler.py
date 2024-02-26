@@ -104,6 +104,7 @@ def handle_each_request(event):
             close_db_connection(connection)
 
     elif field_name == "getDriveDetailsByID":
+
         connection = get_db_connection()
 
         drive_guid = event_arguments["guid"]
@@ -132,7 +133,6 @@ def handle_each_request(event):
             job_roles = cursor.fetchall()
             # print(job_roles)
 
-            job_roles_list = []
             for job_role_row in job_roles:
                 print(job_role_row[0])
                 job_role_dict = {
@@ -141,14 +141,81 @@ def handle_each_request(event):
                     "job_description": job_role_row[2],
                     "job_requirements": job_role_row[3],
                 }
-                job_roles_list.append(job_role_dict)
-                print(job_roles_list)
+                data.append(job_role_dict)
+                print(data)
 
         finally:
             cursor.close()
             close_db_connection(connection)
 
-    return build_response(HTTPStatus.OK, job_roles_list)
+    elif field_name == "login":
+        connection = get_db_connection()
+        email = event_arguments["input"]["email"]
+        password = event_arguments["input"]["password"]
+
+        login_query = """
+            SELECT * 
+            FROM "user"
+            where email = %s
+        """
+
+        cursor = connection.cursor()
+
+        cursor.execute(login_query , (email,))
+        result_data = cursor.fetchone()
+       
+
+        if result_data[5] == password: 
+                
+                data = {
+                    "id": result_data[0],
+                    "guid": result_data[1],
+                    "first_name": result_data[2],
+                    "last_name": result_data[3],
+                    "email": result_data[4],
+                    "profile_pic": result_data[9],
+                    "resume": result_data[7]
+                }
+                
+                # data.append(dict)
+                # print(data)
+        else:
+            # print("Wrong Password")
+            data = {"message": "Wrong Password" } 
+            return build_response(HTTPStatus.UNAUTHORIZED, data)
+        # print(temp)
+
+    elif field_name == "applyToDrive":
+
+        connection = get_db_connection()
+        try:
+            user_id = event_arguments["input"]["user_id"]
+            updated_resume= event_arguments["input"]["updated_resume"]
+            time_slot = event_arguments["input"]["time_slot"]
+            walkin_drive_id= event_arguments["input"]["walkin_drive_id"]
+            jobRoles= event_arguments["input"]["jobRoles"]
+
+            apply_drive_query = """
+                INSERT INTO "applied_drive" (updated_resume , time_slot_id, walk_in_drive_id , user_id)
+                VALUES 
+                (%s,%s,%s,%s)
+            """
+
+            cursor = connection.cursor()
+
+            cursor.execute(apply_drive_query , (updated_resume,time_slot,walkin_drive_id,user_id))
+            connection.commit()
+            print("successfull")
+
+        except Exception as e:
+            connection.rollback()
+            print(f"Error submitting application: {str(e)}")
+            data = {"error": "Failed to submit application"}
+        finally:
+            cursor.close()
+            close_db_connection(connection)
+            
+    return build_response(HTTPStatus.OK, data)
 
 
 def build_response(status_code, body):

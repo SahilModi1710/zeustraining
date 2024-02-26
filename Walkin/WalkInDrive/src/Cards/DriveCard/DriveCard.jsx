@@ -6,7 +6,7 @@ const DriveCard = ({ driveDetails }) => {
   const navigateTo = useNavigate();
 
   const handleClick = () => {
-    navigateTo("/walkindrives/singleDrive");
+    navigateTo("/walkindrives/drive");
   };
 
   return (

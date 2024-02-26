@@ -3,6 +3,8 @@ import PersonalInformation from "../PersonalInformation/PersonalInformation";
 import Qualifications from "../Qualifications/Qualifications";
 import Button from "../Button/Button";
 import { useNavigate } from "react-router-dom";
+// import RegistrationHeader from "../../Header/RegistrationHeader";
+import "./style.css";
 
 const Review = () => {
   const navigatTo = useNavigate();
@@ -19,8 +21,24 @@ const Review = () => {
 
   return (
     <>
-      <button onClick={handleEdit}>edit </button>
+      {/* <RegistrationHeader /> */}
+      <div className="personal-information">
+        <div className="title">Personal Information</div>
+        <div className="edit">
+          <button className="btn" onClick={handleEdit}>
+            Edit
+          </button>
+        </div>
+      </div>
       <PersonalInformation review={isReview} />
+      <div className="personal-information">
+        <div className="title">Qualifications</div>
+        <div className="edit">
+          <button className="btn" onClick={handleEdit}>
+            Edit
+          </button>
+        </div>
+      </div>
       <Qualifications review={isReview} />
       <Button btnName={"PREVIOUS"} onClick={handlePrevious} />
     </>

@@ -1,10 +1,10 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
-const Dotenv = require("dotenv-webpack");
+const Dotenv = require('dotenv-webpack');
 const deps = require("./package.json").dependencies;
 module.exports = (_, argv) => ({
   output: {
-    publicPath: "http://localhost:8084/",
+    publicPath: "http://localhost:8086/",
   },
 
   resolve: {
@@ -12,7 +12,7 @@ module.exports = (_, argv) => ({
   },
 
   devServer: {
-    port: 8084,
+    port: 8086,
     historyApiFallback: true,
   },
 
@@ -41,15 +41,10 @@ module.exports = (_, argv) => ({
 
   plugins: [
     new ModuleFederationPlugin({
-      name: "WalkInDriveMFE",
+      name: "Utility",
       filename: "remoteEntry.js",
       remotes: {},
-      exposes: {
-        "./WalkInDrives": "./src/WalkInModule/WalkInDrives.jsx",
-        "./DriveDetails": "./src/WalkInModule/DriveDetails.jsx",
-        "./Review": "./src/WalkInModule/Review/Review.jsx",
-        "./WalkinDrive": "./src/WalkInModule/WalkinDrive.jsx",
-      },
+      exposes: {},
       shared: {
         ...deps,
         react: {
@@ -65,6 +60,6 @@ module.exports = (_, argv) => ({
     new HtmlWebPackPlugin({
       template: "./src/index.html",
     }),
-    new Dotenv(),
+    new Dotenv()
   ],
 });

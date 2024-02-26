@@ -25,25 +25,6 @@
 #   getUserById(id: String): User
 # }
 
-# type User {
-#   id: Int!
-#   guid: String!
-#   first_name: String!
-#   last_name: String!
-#   email: String!
-#   password: String!
-#   phone_no: String!
-#   resume: String!
-#   portfolio_url: String
-#   profile_pic: String
-#   dt_created: String!
-#   dt_modified: String!
-#   educationalQualifications: [EducationalQualification!]!
-#   professionalQualifications: [ProfessionalQualification!]!
-#   jobRoles: [JobRole!]!
-#   appliedDrives: [AppliedDrive!]!
-# }
-
 # type EducationalQualification {
 #   id: Int!
 #   guid: String!
@@ -90,45 +71,7 @@
 #   dt_modified: String!
 # }
 
-# type AppliedDrive {
-#   id: Int!
-#   guid: String!
-#   updated_resume: String
-#   timeSlot: TimeSlot!
-#   walkInDrive: WalkInDrive!
-#   preferredJobroles: [jobRoles!]
-#   dt_created: String!
-#   dt_modified: String!
-# }
-
-type JobRole {
-  job_title: String
-  package: String
-  job_description: String
-  job_requirements: String
-}
-
-type TimeSlot {
-  id: Int!
-  slot_timmings: String!
-}
-
-type WalkInDrive {
-  id: Int!
-  guid: String!
-  drive_title: String!
-  start_date: String!
-  end_date: String!
-  location: String!
-  jobRoles: [String!]!
-  timeSlots: [String!]!
-  dt_created: String!
-  dt_modified: String!
-}
-
 # input UserInput {
-#   id: Int!
-#   guid: String!
 #   first_name: String!
 #   last_name: String!
 #   email: String!
@@ -207,10 +150,87 @@ type WalkInDrive {
 #   guid: String!
 # }
 
-# type Mutation {
-#   createUser(input: UserInput!): User
-#   applyToDrive(applicationInput: applicationInput!): AppliedDrive
+# type User {
+#   id: Int!
+#   guid: String!
+#   first_name: String!
+#   last_name: String!
+#   email: String!
+#   password: String!
+#   phone_no: String!
+#   resume: String!
+#   portfolio_url: String
+#   profile_pic: String
+#   dt_created: String!
+#   dt_modified: String!
+#   educationalQualifications: [EducationalQualification!]!
+#   professionalQualifications: [ProfessionalQualification!]!
+#   jobRoles: [JobRole!]!
+#   appliedDrives: [AppliedDrive!]!
 # }
+
+type JobRole {
+  job_title: String
+  package: String
+  job_description: String
+  job_requirements: String
+}
+
+type TimeSlot {
+  id: Int!
+  slot_timmings: String!
+}
+
+type WalkInDrive {
+  id: Int!
+  guid: String!
+  drive_title: String!
+  start_date: String!
+  end_date: String!
+  location: String!
+  jobRoles: [String!]!
+  timeSlots: [String!]!
+  dt_created: String!
+  dt_modified: String!
+}
+
+input LoginInput {
+  email: String!
+  password: String!
+}
+
+type OutputLogin {
+  id: Int!
+  guid: String!
+  first_name: String!
+  last_name: String!
+  email: String!
+  profile_pic: String
+}
+
+# type AppliedDrive {
+#   id: Int!
+#   guid: String!
+#   updated_resume: String
+#   timeSlot: TimeSlot!
+#   walkInDrive: WalkInDrive!
+#   preferredJobroles: [jobRoles!]
+#   dt_created: String!
+#   dt_modified: String!
+# }
+
+input applicationInput {
+  user_id: Int!
+  updated_resume: String!
+  time_slot: Int!
+  walkin_drive_id: Int!
+  jobRoles: [Int!]
+}
+
+type Mutation {
+  # createUser(input: UserInput!): User
+  applyToDrive(input: applicationInput!): String
+}
 
 type Query {
   # users: [User]
@@ -218,4 +238,5 @@ type Query {
   # getUserById(id: Int): User
   getAllWalkInDrives: [WalkInDrive]
   getDriveDetailsByID(guid: String!): [JobRole]
+  login(input: LoginInput!): OutputLogin
 }

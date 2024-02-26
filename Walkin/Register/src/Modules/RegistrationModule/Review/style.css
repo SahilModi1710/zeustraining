@@ -1,0 +1,18 @@
+.personal-information{
+    font: normal normal 700 16px/20px QuickSand;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 2px;
+    margin: 24px 24px 0px 24px;
+}
+
+.btn {
+    padding: 5px 27px;
+    background: #3fd28b 0% 0% no-repeat padding-box;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font: normal normal 600 16px/18px QuickSand;
+    border-radius: 2px;
+    width: fit-content;
+}

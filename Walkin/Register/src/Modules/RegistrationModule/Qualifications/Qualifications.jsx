@@ -19,7 +19,6 @@ const Qualifications = ({ review }) => {
   return (
     <>
       <div className="container">
-        <RegistrationHeader />
         <EducationalQualification review={review} />
         <ProfessionalQualification review={review} />
 

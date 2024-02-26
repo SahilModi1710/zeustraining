@@ -1,14 +1,22 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Login from "LoginMFE/Login";
+import Registration from "RegisterMFE/Registration";
+import WalkinDrive from "WalkInDriveMFE/WalkinDrive";
 import Header from "NavigationMFE/Header";
-import router from "./Router";
-import { RouterProvider } from "react-router-dom";
 
 const App = () => (
   <div className="container">
     <Header />
-    <RouterProvider router={router} />
+    <Router>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/register/*" element={<Registration />} />
+        <Route path="/walkindrives/*" element={<WalkinDrive />} />
+      </Routes>
+    </Router>
   </div>
 );
 
