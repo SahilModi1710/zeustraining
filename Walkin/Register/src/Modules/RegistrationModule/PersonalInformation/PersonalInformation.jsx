@@ -3,39 +3,34 @@ import styles from "./style.module.css";
 import Button from "../Button/Button";
 import { useNavigate } from "react-router-dom";
 import { useRegisterStore } from "../../../ReactStore/Store";
-import RegistrationHeader from "../../Header/RegistrationHeader";
 
 const PersonalInformation = ({ review }) => {
-  const { userDetails, userRegister } = useRegisterStore();
-
   const navigateTo = useNavigate();
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [resumeFile, setResumeFile] = useState(null);
-  const [portfolioUrl, setPortfolioUrl] = useState("");
-  const [referral, setReferral] = useState("");
-  const [jobMail, setJobMail] = useState(true);
-  const [profilePicFile, setProfilePicFile] = useState(null);
-  const [countryCode, setCountryCode] = useState("");
-  const [jobRoles, setJobRoles] = useState([
-    "Instructional Designer",
-    "Software Quality Engineer",
-  ]);
 
-  const personalInformation = {
-    firstName: firstName,
-    lastName: lastName,
-    email: email,
-    mobileNumber: countryCode + phoneNumber + "",
-    resumeFile: resumeFile,
-    portfolioUrl: portfolioUrl,
-    referral: referral,
-    jobMail: jobMail,
-    profilePicFile: profilePicFile,
-    jobRoles: jobRoles,
-  };
+  const {
+    firstName,
+    setFirstName,
+    lastName,
+    setLastName,
+    email,
+    setEmail,
+    phoneNumber,
+    setPhoneNumber,
+    resumeFile,
+    setResumeFile,
+    portfolioUrl,
+    setPortfolioUrl,
+    referral,
+    setReferral,
+    jobMail,
+    setJobMail,
+    profilePicFile,
+    setProfilePicFile,
+    countryCode,
+    setCountryCode,
+    jobRoles,
+    setJobRoles,
+  } = useRegisterStore();
 
   const handleJobRoleChange = (role) => {
     if (jobRoles.includes(role)) {
@@ -45,11 +40,7 @@ const PersonalInformation = ({ review }) => {
     }
   };
 
-  console.log(personalInformation);
-
   const handleNext = () => {
-    userRegister(personalInformation);
-    console.log(userDetails);
     navigateTo("/register/qualification");
   };
 

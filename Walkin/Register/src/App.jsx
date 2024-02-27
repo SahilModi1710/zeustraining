@@ -6,11 +6,13 @@ import "./index.css";
 
 const App = () => {
   return (
-    <Router>
-      <Routes>
-        <Route path="/register/*" element={<Registration />} />
-      </Routes>
-    </Router>
+    <div className="registration">
+      <Router>
+        <Routes>
+          <Route path="/register/*" element={<Registration />} />
+        </Routes>
+      </Router>
+    </div>
   );
 };
 

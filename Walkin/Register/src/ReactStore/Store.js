@@ -1,10 +1,26 @@
 import { create } from "zustand";
 
 export const useRegisterStore = create((set) => ({
-  userDetails: {},
-  userRegister: (newUserDetails) => {
-    set((state) => ({
-      userDetails: { ...state.userDetails, ...newUserDetails },
-    }));
-  },
+  firstName: "",
+  lastName: "",
+  email: "",
+  phoneNumber: "",
+  resumeFile: null,
+  portfolioUrl: "",
+  referral: "",
+  jobMail: true,
+  profilePicFile: null,
+  countryCode: "",
+  jobRoles: ["Instructional Designer", "Software Quality Engineer"],
+  setFirstName: (value) => set({ firstName: value }),
+  setLastName: (value) => set({ lastName: value }),
+  setEmail: (value) => set({ email: value }),
+  setPhoneNumber: (value) => set({ phoneNumber: value }),
+  setResumeFile: (value) => set({ resumeFile: value }),
+  setPortfolioUrl: (value) => set({ portfolioUrl: value }),
+  setReferral: (value) => set({ referral: value }),
+  setJobMail: (value) => set({ jobMail: value }),
+  setProfilePicFile: (value) => set({ profilePicFile: value }),
+  setCountryCode: (value) => set({ countryCode: value }),
+  setJobRoles: (value) => set({ jobRoles: value }),
 }));

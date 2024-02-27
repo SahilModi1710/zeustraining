@@ -2,6 +2,10 @@ import React from "react";
 import styles from "./style.module.css";
 
 const RegistrationHeader = () => {
+  const handleCreate = () => {
+    console.log("create");
+  };
+
   return (
     <>
       <div className={styles["header-container"]}>
@@ -38,7 +42,11 @@ const RegistrationHeader = () => {
           <div className={styles.progress}>
             <button className={`${styles.cancel} ${styles.btn}`}>Cancel</button>
 
-            <button className={`${styles.create} ${styles.btn}`} disabled>
+            <button
+              className={`${styles.create} ${styles.btn}`}
+              disabled
+              onClick={handleCreate}
+            >
               Create
             </button>
           </div>

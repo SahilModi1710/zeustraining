@@ -20,34 +20,42 @@ const Login = () => {
     e.preventDefault();
     console.log("login button called ", email, " ", password, " ", rememberMe);
 
-    const authRequest = {
-      info: {
-        fieldName: "Login",
-      },
-      arguments: {
-        input: {
-          email: email,
-          password: password,
-        },
-      },
+    const query = `
+      query Login($email: String!, $password: String!) {
+        Login(input: { email: $email, password: $password }) {
+          id
+          guid
+          first_name
+          last_name
+          email
+          profile_pic
+        }
+      }
+    `;
+
+    const variables = {
+      email: email,
+      password: password,
     };
 
     try {
       const response = await axios.post(
-        "http://localhost:4000/dev/api/handle_graphql",
-        authRequest
+        "http://localhost:5000/graphql",
+        {
+          query,
+          variables,
+        },
+        {
+          headers: {
+            "x-api-key": "dummy-api-key",
+          },
+        }
       );
-      if (response.data) {
-        console.log(response);
-        navigateTo("/walkindrives");
-      }
-      return response.data;
-    } catch (error) {
-      console.error("Error in fetchData:", error.message);
-      throw new Error("Error fetching data");
-    }
 
-    userLogin(authRequest);
+      console.log(response.data);
+    } catch (error) {
+      console.error("Error in handleLogin:", error.message);
+    }
   };
 
   return (

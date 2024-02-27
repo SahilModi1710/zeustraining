@@ -1,7 +1,10 @@
 import React from "react";
 import styles from "./style.module.css";
+import { useDriveStore } from "../../ReactStore/Store";
 
 const Review = () => {
+  const { applyDrive } = useDriveStore();
+
   return (
     <>
       <div className={styles.container}>
@@ -22,7 +25,7 @@ const Review = () => {
           <p className={styles.para}>
             03rd July 2021
             <br />
-            9:00 AM to 11:00 AM
+            {applyDrive.timeSlot}
           </p>
 
           <div className={styles.linee}></div>

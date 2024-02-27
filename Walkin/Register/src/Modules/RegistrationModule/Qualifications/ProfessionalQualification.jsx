@@ -1,28 +1,38 @@
 import React, { useState } from "react";
+import useQualificationStore from "../../../ReactStore/QualificationsStore";
 
 const ProfessionalQualification = ({ review }) => {
   const [listUpQ, setListUpQ] = useState(true);
   const [showQualificationDialog, setShowQualificationDialog] = useState(true);
-  const [isFresher, setIsFresher] = useState(false);
-  const [experienceYear, setExperienceYear] = useState("5");
-  const [currentCtc, setCurrentCtc] = useState("500000");
-  const [expectedCtc, setExpectedCtc] = useState("650000");
-  const [noticePeriod, setNoticePeriod] = useState(false);
-  const [noticeEndDate, setNoticeEndDate] = useState("");
-  const [noticeDuration, setNoticeDuration] = useState("");
-  const [appliedTest, setAppliedTest] = useState(false);
-  const [appliedRole, setAppliedRole] = useState("");
-  const [otherExpertiseTechnologies, setOtherExpertiseTechnologies] =
-    useState("");
-  const [otherFamiliarTechnologies, setOtherFamiliarTechnologies] =
-    useState("");
-  const [expertiseTechnology, setExpertiseTechnology] = useState([
-    "Javascript",
-  ]);
-  const [familiarTechnology, setFamiliarTechnology] = useState([
-    "Angular JS",
-    "Node JS",
-  ]);
+
+  const {
+    isFresher,
+    setIsFresher,
+    experienceYear,
+    setExperienceYear,
+    currentCtc,
+    setCurrentCtc,
+    expectedCtc,
+    setExpectedCtc,
+    noticePeriod,
+    setNoticePeriod,
+    noticeEndDate,
+    setNoticeEndDate,
+    noticeDuration,
+    setNoticeDuration,
+    appliedTest,
+    setAppliedTest,
+    appliedRole,
+    setAppliedRole,
+    otherExpertiseTechnologies,
+    setOtherExpertiseTechnologies,
+    otherFamiliarTechnologies,
+    setOtherFamiliarTechnologies,
+    expertiseTechnology,
+    setExpertiseTechnology,
+    familiarTechnology,
+    setFamiliarTechnology,
+  } = useQualificationStore();
 
   const openBox2 = () => {
     setShowQualificationDialog(!showQualificationDialog);
@@ -53,21 +63,6 @@ const ProfessionalQualification = ({ review }) => {
     }
   };
 
-  const professionQualification = {
-    applicantType: isFresher ? "fresher" : "experience",
-    experienceYear: isFresher ? "0" : experienceYear,
-    currentCtc: isFresher ? "0" : currentCtc,
-    expectedCtc: isFresher ? "0" : expectedCtc,
-    expertiseTechnology: isFresher ? [] : expertiseTechnology,
-    familiarTechnology: familiarTechnology,
-    noticePeriod: noticePeriod,
-    noticeEndDate: noticeEndDate,
-    noticeDuration: noticeDuration,
-    appliedTest: appliedTest,
-    appliedRole: appliedRole,
-  };
-
-  console.log(professionQualification);
   return (
     <>
       <div className="education-section ">

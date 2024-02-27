@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./style.css";
 import EducationalQualification from "./EducationalQualification";
 import ProfessionalQualification from "./ProfessionalQualification";
-import RegistrationHeader from "../../Header/RegistrationHeader";
 import Button from "../Button/Button";
 import { useNavigate } from "react-router-dom";
 

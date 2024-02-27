@@ -1,11 +1,14 @@
-import React, { useState } from "react";
-import styles from "./style.module.css"; // Import the module CSS file
-// ... (previous imports)
+import React, { useEffect, useState } from "react";
+import styles from "./style.module.css";
+import { useDriveStore } from "../../ReactStore/Store";
 
 const TimeSlot = ({ driveDetails }) => {
   const [selectedFile, setSelectedFile] = useState(null);
-  const [selectedTimeSlot, setSelectedTimeSlot] = useState(null);
-  const [selectedJobRoles, setSelectedJobRoles] = useState([]);
+  const { applyDrive, setApplyDrive } = useDriveStore();
+
+  useEffect(() => {
+    setApplyDrive({});
+  }, []);
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -13,23 +16,30 @@ const TimeSlot = ({ driveDetails }) => {
   };
 
   const handleTimeSlotChange = (e) => {
-    setSelectedTimeSlot(e.target.value);
+    const selectedTimeSlot = e.target.value;
+    setApplyDrive({ ...applyDrive, timeSlot: selectedTimeSlot });
   };
 
   const handleJobRoleChange = (e) => {
-    const selectedJobRoleId = e.target.value;
+    const selectedJobRole = e.target.value;
+    const isChecked = e.target.checked;
 
-    setSelectedJobRoles((prevSelectedJobRoles) => {
-      if (prevSelectedJobRoles.includes(selectedJobRoleId)) {
-        return prevSelectedJobRoles.filter((id) => id !== selectedJobRoleId);
-      } else {
-        return [...prevSelectedJobRoles, selectedJobRoleId];
+    let updatedJobRoles = applyDrive.jobRoles || [];
+
+    if (isChecked) {
+      if (!updatedJobRoles.includes(selectedJobRole)) {
+        updatedJobRoles = [...updatedJobRoles, selectedJobRole];
       }
-    });
+    } else {
+      updatedJobRoles = updatedJobRoles.filter(
+        (role) => role !== selectedJobRole
+      );
+    }
+
+    setApplyDrive({ ...applyDrive, jobRoles: updatedJobRoles });
   };
 
-  console.log(selectedJobRoles);
-  console.log(selectedTimeSlot);
+  console.log(applyDrive);
 
   return (
     <div className={styles["time-slot"]}>
@@ -45,7 +55,7 @@ const TimeSlot = ({ driveDetails }) => {
                 type="radio"
                 name="timeSlot"
                 id={`timeSlot${index}`}
-                value={timeSlot.time_slot}
+                value={timeSlot.id}
                 className={styles["radio-group"]}
                 onChange={handleTimeSlotChange}
               />
@@ -71,7 +81,7 @@ const TimeSlot = ({ driveDetails }) => {
                 type="checkbox"
                 name="jobRole"
                 id={`jobRole${index}`}
-                value={jobrole.job_title}
+                value={jobrole.id}
                 className={styles["radio-group"]}
                 onChange={handleJobRoleChange}
               />

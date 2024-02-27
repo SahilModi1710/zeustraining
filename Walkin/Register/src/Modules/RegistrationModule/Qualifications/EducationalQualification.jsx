@@ -1,31 +1,34 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import useQualificationStore from "../../../ReactStore/QualificationsStore";
 import { useRegisterStore } from "../../../ReactStore/Store";
 
 const EducationalQualification = ({ review }) => {
-  const [showEducationDialog, setShowEducationDialog] = useState(true);
-  const [listUpQ, setListUpQ] = useState(true);
+  const { userDetails } = useRegisterStore();
 
-  const [percentage, setPercentage] = useState("65");
-  const [year, setYear] = useState("2020");
-  const [qualification, setQualification] = useState(
-    "Bachelor in Technology (B.Tech)"
-  );
-  const [stream, setStream] = useState("Information Technology");
-  const [college, setCollege] = useState("Pune Institute of Technology (PIT)");
-  const [otherCollege, setOtherCollege] = useState("");
-  const [location, setLocation] = useState("Pune");
+  const {
+    showEducationDialog,
+    listUpQ,
+    percentage,
+    year,
+    qualification,
+    stream,
+    college,
+    otherCollege,
+    location,
+    setShowEducationDialog,
+    setListUpQ,
+    setPercentage,
+    setYear,
+    setQualification,
+    setStream,
+    setCollege,
+    setOtherCollege,
+    setLocation,
+  } = useQualificationStore();
 
-  const educationalQualification = {
-    percentage: percentage,
-    year: year,
-    qualification: qualification,
-    stream: stream,
-    college: college === "Others" ? otherCollege : college,
-    location: location,
-  };
-
-  // const { userDetails } = useRegisterStore();
   // console.log(userDetails);
+
+  // console.log(percentage, year, qualification, stream, college, location);
 
   const openBox1 = () => {
     setShowEducationDialog(!showEducationDialog);

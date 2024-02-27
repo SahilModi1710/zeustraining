@@ -1,11 +1,42 @@
 import React from "react";
 import styles from "./style.module.css";
 import { useNavigate } from "react-router-dom";
+import { useDriveStore } from "../../ReactStore/Store";
+import axios from "axios";
 
 const DriveCard = ({ driveDetails, drive }) => {
   const navigateTo = useNavigate();
+  const { applyDrive } = useDriveStore();
 
-  // console.log(driveDetails);
+  const handleApply = async () => {
+    const applyDriveRequest = {
+      info: {
+        fieldName: "ApplyToDrive",
+      },
+      arguments: {
+        input: {
+          user_id: 16,
+          updated_resume: "abc.pdf",
+          time_slot: applyDrive.timeSlot,
+          jobRoles: applyDrive.jobRoles,
+          walkin_drive_id: driveDetails.id,
+        },
+      },
+    };
+
+    try {
+      const response = await axios.post(
+        "http://localhost:4000/dev/api/handle_graphql",
+        applyDriveRequest
+      );
+
+      console.log(response.data);
+    } catch (error) {
+      console.error("Error in fetchData:", error.message);
+    }
+    navigateTo("/walkindrives/review");
+  };
+
   const handleClick = () => {
     navigateTo(`/walkindrives/${driveDetails.guid}`);
   };
@@ -18,12 +49,7 @@ const DriveCard = ({ driveDetails, drive }) => {
             <span className={styles.title}>{driveDetails.drive_title}</span>
 
             {drive && (
-              <button
-                className={styles.btn}
-                onClick={() => {
-                  navigateTo("/walkindrives/review");
-                }}
-              >
+              <button className={styles.btn} onClick={handleApply}>
                 APPLY
               </button>
             )}
