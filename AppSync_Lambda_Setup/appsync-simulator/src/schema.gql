@@ -52,7 +52,7 @@ type TimeSlot {
   time_slot: String
 }
 
-type WalkInDrive {
+type OutputWalkin {
   id: Int!
   guid: String!
   drive_title: String!
@@ -61,6 +61,16 @@ type WalkInDrive {
   location: String!
   jobRoles: [JobRole]
   timeSlots: [TimeSlot]
+}
+
+type WalkInDrive {
+  id: Int!
+  guid: String!
+  drive_title: String!
+  start_date: String!
+  end_date: String!
+  location: String!
+  jobRoles: [JobRole]
 }
 
 input LoginInput {
@@ -92,6 +102,6 @@ type Mutation {
 
 type Query {
   AllWalkInDrives: [WalkInDrive]
-  DriveDetailsByID(guid: String!): [JobRole]
+  DriveDetailsByID(guid: String!): OutputWalkin
   Login(input: LoginInput!): OutputLogin
 }

@@ -8,33 +8,50 @@ const DriveCard = ({ driveDetails, drive }) => {
   const navigateTo = useNavigate();
   const { applyDrive } = useDriveStore();
 
+  const timeSlot = parseInt(applyDrive.timeSlot);
+  const jobRoles = applyDrive.jobRoles?.map((role) => parseInt(role));
+
+  const mutation = `
+    mutation ApplyToDrive($input: applicationInput!) {
+      ApplyToDrive(input: $input)
+    }
+  `;
+
   const handleApply = async () => {
-    const applyDriveRequest = {
-      info: {
-        fieldName: "ApplyToDrive",
-      },
-      arguments: {
-        input: {
-          user_id: 16,
-          updated_resume: "abc.pdf",
-          time_slot: applyDrive.timeSlot,
-          jobRoles: applyDrive.jobRoles,
-          walkin_drive_id: driveDetails.id,
-        },
+    if (!timeSlot || !jobRoles) {
+      alert("select time slot or job role ");
+      return;
+    }
+
+    const variables = {
+      input: {
+        user_id: 11,
+        updated_resume: "abc.pdf",
+        time_slot: timeSlot,
+        jobRoles: jobRoles,
+        walkin_drive_id: driveDetails.id,
       },
     };
 
     try {
       const response = await axios.post(
-        "http://localhost:4000/dev/api/handle_graphql",
-        applyDriveRequest
+        "http://localhost:5000/graphql",
+        {
+          query: mutation,
+          variables,
+        },
+        {
+          headers: {
+            "x-api-key": "dummy-api-key",
+          },
+        }
       );
 
-      console.log(response.data);
+      // console.log(response.data);
+      navigateTo("/walkindrives/review");
     } catch (error) {
-      console.error("Error in fetchData:", error.message);
+      console.error("Error in handleApply:", error.message);
     }
-    navigateTo("/walkindrives/review");
   };
 
   const handleClick = () => {

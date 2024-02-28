@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import DriveCard from "../Cards/DriveCard/DriveCard";
 import axios from "axios";
 import { useDriveStore } from "../ReactStore/Store";
 
 const WalkInDrives = () => {
-  const { drives, fetchDrives } = useDriveStore();
+  const [drives, setDrives] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -18,20 +18,11 @@ const WalkInDrives = () => {
             end_date
             location
             jobRoles {
-              id
               job_title
-              package
-              job_description
-              job_requirements
-            }
-            timeSlots {
-              id
-              time_slot
             }
           }
         }
       `;
-
       try {
         const response = await axios.post(
           "http://localhost:5000/graphql",
@@ -43,8 +34,8 @@ const WalkInDrives = () => {
           }
         );
 
-        console.log(response.data);
-        fetchDrives(response.data.data.AllWalkInDrives);
+        // console.log(response.data);
+        setDrives(response.data.data.AllWalkInDrives);
       } catch (error) {
         console.error("Error in fetchData:", error.message);
       }

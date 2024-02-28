@@ -1,7 +1,12 @@
 import React from "react";
 import styles from "./style.module.css";
+import { useNavigationStore } from "../../ReactStore/Store";
 
 const Header = () => {
+  const { isUserLoggedIn, userDetails } = useNavigationStore();
+
+  console.log(isUserLoggedIn);
+
   return (
     <>
       <div className={styles["header-container"]}>
@@ -21,6 +26,13 @@ const Header = () => {
             />
           </svg>
         </div>
+        {isUserLoggedIn && (
+          <div className={styles["user-avatar"]}>
+            <span className={styles["user-spell"]}>
+              {userDetails.first_name?.charAt(0).toUpperCase()}
+            </span>
+          </div>
+        )}
       </div>
     </>
   );

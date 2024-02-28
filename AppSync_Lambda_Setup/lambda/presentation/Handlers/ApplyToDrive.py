@@ -4,7 +4,7 @@ from ..db_utils import get_db_connection, close_db_connection
 
 def apply_to_drive(event_arguments):
     connection = get_db_connection()
-
+    print(event_arguments)
     try:
         cursor = connection.cursor()
         user_id = event_arguments["user_id"]

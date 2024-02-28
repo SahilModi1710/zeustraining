@@ -6,6 +6,8 @@ const TimeSlot = ({ driveDetails }) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const { applyDrive, setApplyDrive } = useDriveStore();
 
+  // console.log(driveDetails);
+
   useEffect(() => {
     setApplyDrive({});
   }, []);
@@ -39,7 +41,7 @@ const TimeSlot = ({ driveDetails }) => {
     setApplyDrive({ ...applyDrive, jobRoles: updatedJobRoles });
   };
 
-  console.log(applyDrive);
+  // console.log(applyDrive);
 
   return (
     <div className={styles["time-slot"]}>

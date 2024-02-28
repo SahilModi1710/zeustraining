@@ -192,7 +192,7 @@ def create_user(event_arguments):
             "profile_pic": user_details[5],
         }
 
-        print("Data inserted successfully!")
+        return data
 
     except Exception as e:
         print("Error inserting data:", e)

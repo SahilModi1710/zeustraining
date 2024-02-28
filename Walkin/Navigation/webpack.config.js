@@ -43,7 +43,9 @@ module.exports = (_, argv) => ({
     new ModuleFederationPlugin({
       name: "NavigationMFE",
       filename: "remoteEntry.js",
-      remotes: {},
+      remotes: {
+        UtilityMFE: "UtilityMFE@http://localhost:8086/remoteEntry.js",
+      },
       exposes: {
         "./Header": "./src/Modules/Header/Header.jsx",
       },

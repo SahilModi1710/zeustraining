@@ -9,9 +9,8 @@ from .Handlers.CreateUser import create_user
 
 
 def handle_graphql(event, context):
-    print("hello")
     event = json.loads(event["body"])
-    print("hello2")
+
     # print(event)
     data = []
     if type(event) == list:
@@ -45,8 +44,8 @@ def handle_each_request(event):
         return data
 
     elif field_name == "CreateUser":
-        # data = create_user(event)
-        print(event_arguments)
+        data = create_user(event_arguments)
+        # print(event_arguments)
 
     return build_response(HTTPStatus.OK, data)
 

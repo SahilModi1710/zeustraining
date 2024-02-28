@@ -13,7 +13,7 @@ def all_walk_in_drives():
 
         jobRoles_query = """
             SELECT
-                jr.job_title, jr.id
+                jr.job_title
             FROM
                 job_role jr
             JOIN
@@ -22,29 +22,11 @@ def all_walk_in_drives():
                 dhjr.drive_id = %s
         """
 
-        timeSlots_query = """
-            SELECT
-                ts.slot_timings, ts.id
-            FROM
-                time_slot ts
-            JOIN
-                drive_has_time_slot dhts ON dhts.time_slot_id = ts.id   
-            WHERE
-                dhts.drive_id = %s
-        """
-
         for row in results:
             cursor.execute(jobRoles_query, (row[0],))
             job_roles_tuples = cursor.fetchall()
-            job_roles = [
-                {"job_title": title, "id": job_id} for title, job_id in job_roles_tuples
-            ]
 
-            cursor.execute(timeSlots_query, (row[0],))
-            time_slots_tuples = cursor.fetchall()
-            time_slots = [
-                {"time_slot": slot, "id": id} for slot, id in time_slots_tuples
-            ]
+            job_roles = [{"job_title": role[0]} for role in job_roles_tuples]
 
             drive_data = {
                 "id": row[0],
@@ -53,10 +35,7 @@ def all_walk_in_drives():
                 "start_date": str(row[3]),
                 "end_date": str(row[4]),
                 "location": row[5],
-                "dt_created": str(row[6]),
-                "dt_modified": str(row[7]),
                 "jobRoles": job_roles,
-                "timeSlots": time_slots,
             }
             data.append(drive_data)
 

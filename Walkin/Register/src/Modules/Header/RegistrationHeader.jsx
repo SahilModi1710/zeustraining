@@ -1,9 +1,49 @@
 import React from "react";
 import styles from "./style.module.css";
+import { useRegisterStore } from "../../ReactStore/Store";
+import useQualificationStore from "../../ReactStore/QualificationsStore";
+// import variables from "./Variables";
+import createVariable from "./Variables";
+import axios from "axios";
 
 const RegistrationHeader = () => {
-  const handleCreate = () => {
+  const personalInfo = useRegisterStore();
+
+  const qualification = useQualificationStore();
+
+  const handleCreate = async () => {
     console.log("create");
+    const input = createVariable(personalInfo, qualification);
+
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/graphql",
+        {
+          query: `
+          mutation CreateUser($input: UserInput!) {
+            CreateUser(input: $input) {
+              id
+              guid
+              first_name
+              last_name
+              email
+              profile_pic
+            }
+          }
+        `,
+          variables: { input },
+        },
+        {
+          headers: {
+            "x-api-key": "dummy-api-key",
+          },
+        }
+      );
+
+      console.log(response.data.data.CreateUser);
+    } catch (error) {
+      console.error("Error in handleRegister:", error.message);
+    }
   };
 
   return (
@@ -44,7 +84,6 @@ const RegistrationHeader = () => {
 
             <button
               className={`${styles.create} ${styles.btn}`}
-              disabled
               onClick={handleCreate}
             >
               Create

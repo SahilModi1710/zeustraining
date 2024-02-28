@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./style.module.css";
-import { useLoginStore } from "../ReactStore/Store";
+import { useLoginStore, publishLoginEvent } from "../ReactStore/Store";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -11,14 +11,9 @@ const Login = () => {
   const [rememberMe, setRememberMe] = useState(true);
   const navigateTo = useNavigate();
 
-  useEffect(() => {
-    console.log("isUserLoggedIn:", isUserLoggedIn);
-    console.log("userDetails:", userDetails);
-  }, [isUserLoggedIn, userDetails]);
-
   const handleLogin = async (e) => {
     e.preventDefault();
-    console.log("login button called ", email, " ", password, " ", rememberMe);
+    // console.log("login button called ", email, " ", password, " ", rememberMe);
 
     const query = `
       query Login($email: String!, $password: String!) {
@@ -52,7 +47,17 @@ const Login = () => {
         }
       );
 
-      console.log(response.data);
+      const result = response.data.data.Login;
+
+      if (result) {
+        const userLoginDetails = {
+          isUserLoggedIn: true,
+          userDetails: result,
+        };
+        userLogin(userDetails);
+        publishLoginEvent(userLoginDetails);
+        navigateTo("/walkindrives");
+      }
     } catch (error) {
       console.error("Error in handleLogin:", error.message);
     }

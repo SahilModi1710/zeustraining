@@ -92,12 +92,13 @@ const ProfessionalQualification = ({ review }) => {
           <div className="radio-container">
             <input
               type="radio"
-              name="fresher"
+              name="applicantType"
               id="fresher"
               disabled={review}
               className="input-element radio-element"
               style={review ? { border: "none" } : {}}
-              onClick={() => {
+              checked={isFresher}
+              onChange={() => {
                 setIsFresher(true);
               }}
             />
@@ -108,13 +109,13 @@ const ProfessionalQualification = ({ review }) => {
           <div className="radio-container">
             <input
               type="radio"
-              name="experience"
+              name="applicantType"
               id="experience"
-              defaultChecked
               disabled={review}
               className="input-element radio-element"
               style={review ? { border: "none" } : {}}
-              onClick={() => {
+              checked={!isFresher}
+              onChange={() => {
                 setIsFresher(false);
               }}
             />

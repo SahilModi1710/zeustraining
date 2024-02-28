@@ -1,10 +1,14 @@
 import { create } from "zustand";
 
+import pubsub from "UtilityMFE/Pubsub";
+
 export const useLoginStore = create((set) => ({
   isUserLoggedIn: false,
   userDetails: {},
   userLogin: (userDetails) =>
     set((state) => ({ isUserLoggedIn: true, userDetails })),
-  userLogout: () =>
-    set((state) => ({ isUserLoggedIn: false, userDetails: {} })),
 }));
+
+export const publishLoginEvent = (userLoginDetails) => {
+  pubsub.publish("USER_LOGIN", userLoginDetails);
+};
