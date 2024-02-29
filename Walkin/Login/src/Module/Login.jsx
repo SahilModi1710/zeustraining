@@ -5,11 +5,17 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Login = () => {
-  const { userLogin, isUserLoggedIn, userDetails } = useLoginStore();
+  const { userLogin, userDetails } = useLoginStore();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(true);
   const navigateTo = useNavigate();
+
+  const mySetCookie = (cookieKey, cookieValue) => {
+    const cookie = `${cookieKey}=${cookieValue};`;
+
+    document.cookie = cookie;
+  };
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -24,6 +30,7 @@ const Login = () => {
           last_name
           email
           profile_pic
+          token
         }
       }
     `;
@@ -47,21 +54,40 @@ const Login = () => {
         }
       );
 
+      // console.log(response);
       const result = response.data.data.Login;
+      const token = result.token;
 
       if (result) {
+        mySetCookie("token", token);
         const userLoginDetails = {
           isUserLoggedIn: true,
           userDetails: result,
         };
         userLogin(userDetails);
         publishLoginEvent(userLoginDetails);
+
         navigateTo("/walkindrives");
       }
     } catch (error) {
       console.error("Error in handleLogin:", error.message);
     }
   };
+
+  const removeCookie = (cookieKey) => {
+    const cookie = `${cookieKey}=; Expires=Thu, 01 Jan 1970 00:00:01 GMT;`;
+
+    document.cookie = cookie;
+  };
+
+  useEffect(() => {
+    removeCookie("token");
+    const userLoginDetails = {
+      isUserLoggedIn: false,
+      userDetails: {},
+    };
+    publishLoginEvent(userLoginDetails);
+  }, []);
 
   return (
     <div className={styles.container}>

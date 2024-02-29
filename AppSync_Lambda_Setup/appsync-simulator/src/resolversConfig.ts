@@ -41,5 +41,13 @@ export const resolversConfig: (AppSyncSimulatorPipelineResolverConfig | AppSyncS
         dataSourceName: "LambdaDataSource",
         requestMappingTemplateLocation: "lambdaRequestMappingTemplate.vtl",
         responseMappingTemplateLocation: "lambdaResponseMappingTemplate.vtl"
+    },
+    {
+        kind: RESOLVER_KIND.UNIT,
+        typeName: "Query",
+        fieldName: "Authentication",
+        dataSourceName: "LambdaDataSource",
+        requestMappingTemplateLocation: "lambdaRequestMappingTemplate.vtl",
+        responseMappingTemplateLocation: "lambdaResponseMappingTemplate.vtl"
     }
 ]

@@ -1,5 +1,6 @@
 import psycopg2
 from ..db_utils import get_db_connection, close_db_connection
+from flask import request
 
 
 def drive_details_by_id(drive_guid):
@@ -30,6 +31,7 @@ def drive_details_by_id(drive_guid):
                 dhts.drive_id = %s
         """
 
+    print(request.cookies)
     try:
         cursor = connection.cursor()
 

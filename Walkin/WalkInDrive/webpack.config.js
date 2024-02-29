@@ -43,7 +43,9 @@ module.exports = (_, argv) => ({
     new ModuleFederationPlugin({
       name: "WalkInDriveMFE",
       filename: "remoteEntry.js",
-      remotes: {},
+      remotes: {
+        UtilityMFE: "UtilityMFE@http://localhost:8086/remoteEntry.js",
+      },
       exposes: {
         "./WalkInDrives": "./src/WalkInModule/WalkInDrives.jsx",
         "./DriveDetails": "./src/WalkInModule/DriveDetails.jsx",

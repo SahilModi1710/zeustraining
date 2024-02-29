@@ -6,12 +6,12 @@ from .Handlers.DriveDetailsById import drive_details_by_id
 from .Handlers.Login import login
 from .Handlers.ApplyToDrive import apply_to_drive
 from .Handlers.CreateUser import create_user
+from .Handlers.Authentication import authentication
 
 
 def handle_graphql(event, context):
     event = json.loads(event["body"])
 
-    # print(event)
     data = []
     if type(event) == list:
         for each_event in event:
@@ -40,12 +40,13 @@ def handle_each_request(event):
 
     elif field_name == "ApplyToDrive":
         data = apply_to_drive(event_arguments["input"])
-
         return data
 
     elif field_name == "CreateUser":
         data = create_user(event_arguments)
-        # print(event_arguments)
+    elif field_name == "Authentication":
+
+        data = authentication(event_arguments)
 
     return build_response(HTTPStatus.OK, data)
 

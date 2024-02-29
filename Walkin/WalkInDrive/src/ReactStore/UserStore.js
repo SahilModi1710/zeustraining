@@ -2,7 +2,7 @@ import { create } from "zustand";
 
 import pubsub from "UtilityMFE/Pubsub";
 
-export const useNavigationStore = create((set) => ({
+export const useUserStore = create((set) => ({
   isUserLoggedIn: false,
   userDetails: {},
   userLoginInfo: (isUserLoggedIn, userDetails) =>
@@ -13,7 +13,7 @@ export const useNavigationStore = create((set) => ({
 }));
 
 const udpateLocalStore = (user) => {
-  const { userLoginInfo } = useNavigationStore.getState();
+  const { userLoginInfo } = useUserStore.getState();
   const isUserLoggedIn = user.isUserLoggedIn;
   const userDetails = user.userDetails;
   userLoginInfo(isUserLoggedIn, userDetails);

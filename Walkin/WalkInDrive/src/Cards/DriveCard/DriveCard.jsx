@@ -3,10 +3,13 @@ import styles from "./style.module.css";
 import { useNavigate } from "react-router-dom";
 import { useDriveStore } from "../../ReactStore/Store";
 import axios from "axios";
+import { useUserStore } from "../../ReactStore/UserStore";
 
 const DriveCard = ({ driveDetails, drive }) => {
   const navigateTo = useNavigate();
   const { applyDrive } = useDriveStore();
+
+  const { userDetails } = useUserStore();
 
   const timeSlot = parseInt(applyDrive.timeSlot);
   const jobRoles = applyDrive.jobRoles?.map((role) => parseInt(role));
@@ -25,7 +28,7 @@ const DriveCard = ({ driveDetails, drive }) => {
 
     const variables = {
       input: {
-        user_id: 11,
+        user_id: userDetails.id,
         updated_resume: "abc.pdf",
         time_slot: timeSlot,
         jobRoles: jobRoles,

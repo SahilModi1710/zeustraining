@@ -21,8 +21,8 @@ class PubSub {
   }
 
   subscribe(event, callback) {
-    console.log("inside subscribe");
-    console.log(instance);
+    // console.log("inside subscribe");
+    // console.log(instance);
     if (typeof event !== "string") throw new Error("Topic must be a string.");
     if (typeof callback !== "function")
       throw new Error("onMessage must be a function.");

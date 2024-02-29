@@ -53,6 +53,7 @@ module.exports = (_, argv) => ({
       },
       exposes: {
         "./Login": "./src/Module/Login.jsx",
+        "./fetch": "./src/fetch.js",
       },
       shared: {
         ...deps,

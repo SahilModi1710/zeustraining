@@ -5,9 +5,6 @@ import Button from "../Button/Button";
 import { useNavigate } from "react-router-dom";
 
 import "./style.css";
-import { useRegisterStore } from "../../../ReactStore/Store";
-import useQualificationStore from "../../../ReactStore/QualificationsStore";
-import axios from "axios";
 
 const Review = () => {
   const navigatTo = useNavigate();
@@ -42,8 +39,6 @@ const Review = () => {
       </div>
       <Qualifications review={isReview} />
       <Button btnName={"PREVIOUS"} onClick={handlePrevious} />
-
-      <button onClick={handleRegister}>register</button>
     </>
   );
 };

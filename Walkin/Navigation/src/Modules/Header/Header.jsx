@@ -5,8 +5,6 @@ import { useNavigationStore } from "../../ReactStore/Store";
 const Header = () => {
   const { isUserLoggedIn, userDetails } = useNavigationStore();
 
-  console.log(isUserLoggedIn);
-
   return (
     <>
       <div className={styles["header-container"]}>
